@@ -308,6 +308,9 @@ return [
         'settings_table'         => 'admin_settings',
         'extensions_table'       => 'admin_extensions',
         'extension_histories_table' => 'admin_extension_histories',
+
+        'category_table' => 'category',
+        'category_model' => \App\Models\Category::class,
     ],
 
     /*

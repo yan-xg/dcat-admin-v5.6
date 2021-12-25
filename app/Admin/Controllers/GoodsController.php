@@ -33,10 +33,10 @@ class GoodsController extends AdminController
             $grid->column('status');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -77,20 +77,36 @@ class GoodsController extends AdminController
     protected function form()
     {
         return Form::make(new Goods(), function (Form $form) {
+            $form->disableListButton();     //禁用列表按钮
             $form->display('id');
-            $form->text('category_id');
-            $form->text('goods_name');
-            $form->text('goods_shorttitle');
-            $form->text('goods_keywords');
-            $form->text('goods_property');
-            $form->text('goods_description');
-            $form->text('goods_price');
-            $form->text('goods_original_price');
-            $form->text('goods_cost');
-            $form->text('goods_sell_num');
-            $form->text('goods_stock');
-            $form->text('status');
-        
+
+            $form->tab('基本信息', function (Form $form) {
+                $form->column(6, function (Form $form) {
+                    $categoryModel = config('admin.database.category_model');
+
+                    $form->select('category_id')->options($categoryModel::selectOptions())->required();
+                    $form->text('goods_name')->required();
+                    $form->text('goods_shorttitle');
+                    $form->tags('goods_keywords')->help('插入逗号 (,) 隔开的字符');
+                    $form->text('goods_property');
+                });
+
+                $form->column(6, function (Form $form) {
+                    $form->decimal('goods_price')->width(3);
+                    $form->decimal('goods_original_price')->width(3);
+                    $form->decimal('goods_cost')->width(3);
+                    $form->number('goods_sell_num');
+                    $form->number('goods_stock');
+                    $form->radio('status')->options([0=>'下架',1=>'上架'])->default(1);
+                });
+
+            })->tab('描述', function (Form $form) {
+                $form->editor('goods_description');
+            })->tab('商品图', function (Form $form) {
+                $form->hasMany('Image', function ($form) {
+                    $form->multipleImage('image')->accept('jpg,png,gif,jpeg', 'image/*')->sortable();
+                });
+            });
             $form->display('created_at');
             $form->display('updated_at');
         });

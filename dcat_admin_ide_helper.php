@@ -50,6 +50,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection status
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
+     * @property Grid\Column|Collection goods_id
+     * @property Grid\Column|Collection pic_desc
+     * @property Grid\Column|Collection pic_url
+     * @property Grid\Column|Collection is_master
+     * @property Grid\Column|Collection pic_order
+     * @property Grid\Column|Collection pic_status
      *
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
@@ -90,6 +96,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection status(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
+     * @method Grid\Column|Collection goods_id(string $label = null)
+     * @method Grid\Column|Collection pic_desc(string $label = null)
+     * @method Grid\Column|Collection pic_url(string $label = null)
+     * @method Grid\Column|Collection is_master(string $label = null)
+     * @method Grid\Column|Collection pic_order(string $label = null)
+     * @method Grid\Column|Collection pic_status(string $label = null)
      */
     class Grid {}
 
@@ -135,6 +147,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection status
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
+     * @property Show\Field|Collection goods_id
+     * @property Show\Field|Collection pic_desc
+     * @property Show\Field|Collection pic_url
+     * @property Show\Field|Collection is_master
+     * @property Show\Field|Collection pic_order
+     * @property Show\Field|Collection pic_status
      *
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
@@ -175,6 +193,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection status(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
+     * @method Show\Field|Collection goods_id(string $label = null)
+     * @method Show\Field|Collection pic_desc(string $label = null)
+     * @method Show\Field|Collection pic_url(string $label = null)
+     * @method Show\Field|Collection is_master(string $label = null)
+     * @method Show\Field|Collection pic_order(string $label = null)
+     * @method Show\Field|Collection pic_status(string $label = null)
      */
     class Show {}
 

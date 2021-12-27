@@ -22,9 +22,7 @@ class GoodsController extends AdminController
             $grid->column('category_id');
             $grid->column('goods_name');
             $grid->column('goods_shorttitle');
-            $grid->column('goods_keywords');
             $grid->column('goods_property');
-            $grid->column('goods_description');
             $grid->column('goods_price');
             $grid->column('goods_original_price');
             $grid->column('goods_cost');
@@ -85,10 +83,10 @@ class GoodsController extends AdminController
                     $categoryModel = config('admin.database.category_model');
 
                     $form->select('category_id')->options($categoryModel::selectOptions())->required();
-                    $form->text('goods_name')->required();
-                    $form->text('goods_shorttitle');
-                    $form->tags('goods_keywords')->help('插入逗号 (,) 隔开的字符');
-                    $form->text('goods_property');
+                    $form->text('goods_name')->required()->saveAsString();
+                    $form->text('goods_shorttitle')->saveAsString();
+                    $form->tags('goods_keywords')->help('插入逗号 (,) 隔开的字符')->saveAsString();
+                    $form->text('goods_property')->saveAsString();
                 });
 
                 $form->column(6, function (Form $form) {
@@ -101,12 +99,13 @@ class GoodsController extends AdminController
                 });
 
             })->tab('描述', function (Form $form) {
-                $form->editor('goods_description');
-            })->tab('商品图', function (Form $form) {
-                $form->hasMany('Image', function ($form) {
-                    $form->multipleImage('image')->accept('jpg,png,gif,jpeg', 'image/*')->sortable();
-                });
+                $form->editor('goods_description')->saveAsString();
             });
+//                ->tab('商品图', function (Form $form) {
+//                $form->hasMany('Image', function ($form) {
+//                    $form->multipleImage('image')->accept('jpg,png,gif,jpeg', 'image/*')->sortable();
+//                });
+//            });
             $form->display('created_at');
             $form->display('updated_at');
         });

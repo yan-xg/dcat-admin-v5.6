@@ -15,8 +15,4 @@ class Category extends Model implements Sortable
     protected $titleColumn = 'title';
     protected $orderColumn = 'order';
     protected $parentColumn = 'parent_id';
-
-    public function goods(){
-        return $this->hasMany(Goods::class,'category_id');
-    }
 }

@@ -5,7 +5,7 @@ return [
         'pic' => 'Pic',
     ],
     'fields' => [
-        'goods_id' => '商品id',
+        'goods_id' => '商品类型',
         'pic_desc' => '图片描述',
         'pic_url' => '图片地址',
         'is_master' => '是否主图',

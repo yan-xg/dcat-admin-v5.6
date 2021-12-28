@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goods extends Model
 {
-    public function category()
+    public function pic()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->hasOne(Pic::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

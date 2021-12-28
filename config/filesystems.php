@@ -64,6 +64,13 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'goods_uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/'.date('Ymd',time())),
+            'visibility' => 'public',
+            'url' => env('APP_URL').'/uploads/'.date('Ymd',time()),
+        ],
+
     ],
 
 ];

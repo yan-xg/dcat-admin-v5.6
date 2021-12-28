@@ -27,10 +27,10 @@ class PicController extends AdminController
             $grid->column('pic_status');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -72,7 +72,7 @@ class PicController extends AdminController
             $form->text('is_master');
             $form->text('pic_order');
             $form->text('pic_status');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });

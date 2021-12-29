@@ -48,9 +48,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection goods_sell_num
      * @property Grid\Column|Collection goods_stock
      * @property Grid\Column|Collection status
+     * @property Grid\Column|Collection goods_id
+     * @property Grid\Column|Collection goods_key
+     * @property Grid\Column|Collection goods_value
+     * @property Grid\Column|Collection goods_desc
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
-     * @property Grid\Column|Collection goods_id
      * @property Grid\Column|Collection pic_desc
      * @property Grid\Column|Collection pic_url
      * @property Grid\Column|Collection is_master
@@ -94,9 +97,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection goods_sell_num(string $label = null)
      * @method Grid\Column|Collection goods_stock(string $label = null)
      * @method Grid\Column|Collection status(string $label = null)
+     * @method Grid\Column|Collection goods_id(string $label = null)
+     * @method Grid\Column|Collection goods_key(string $label = null)
+     * @method Grid\Column|Collection goods_value(string $label = null)
+     * @method Grid\Column|Collection goods_desc(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
-     * @method Grid\Column|Collection goods_id(string $label = null)
      * @method Grid\Column|Collection pic_desc(string $label = null)
      * @method Grid\Column|Collection pic_url(string $label = null)
      * @method Grid\Column|Collection is_master(string $label = null)
@@ -145,9 +151,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection goods_sell_num
      * @property Show\Field|Collection goods_stock
      * @property Show\Field|Collection status
+     * @property Show\Field|Collection goods_id
+     * @property Show\Field|Collection goods_key
+     * @property Show\Field|Collection goods_value
+     * @property Show\Field|Collection goods_desc
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
-     * @property Show\Field|Collection goods_id
      * @property Show\Field|Collection pic_desc
      * @property Show\Field|Collection pic_url
      * @property Show\Field|Collection is_master
@@ -191,9 +200,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection goods_sell_num(string $label = null)
      * @method Show\Field|Collection goods_stock(string $label = null)
      * @method Show\Field|Collection status(string $label = null)
+     * @method Show\Field|Collection goods_id(string $label = null)
+     * @method Show\Field|Collection goods_key(string $label = null)
+     * @method Show\Field|Collection goods_value(string $label = null)
+     * @method Show\Field|Collection goods_desc(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
-     * @method Show\Field|Collection goods_id(string $label = null)
      * @method Show\Field|Collection pic_desc(string $label = null)
      * @method Show\Field|Collection pic_url(string $label = null)
      * @method Show\Field|Collection is_master(string $label = null)

@@ -18,20 +18,24 @@ class PicController extends AdminController
     protected function grid()
     {
         return Grid::make(new Pic(), function (Grid $grid) {
-            $grid->column('id')->sortable();
-            $grid->column('goods_id');
-            $grid->column('pic_desc');
-            $grid->column('pic_url');
-            $grid->column('is_master');
-            $grid->column('pic_order');
-            $grid->column('pic_status');
+
+            if (request()->get('_view_') !== 'list') {
+                // 设置自定义视图
+                $grid->view('admin.grid.custom');
+                $grid->setActionClass(Grid\Displayers\Actions::class);
+            }
+
+            $grid->column('id', __('ID'));
+            $grid->column('pic_url')->image();
             $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+            $grid->column('updated_at');
 
-            $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-
-            });
+            $grid->disableCreateButton();
+            $grid->disableDeleteButton();
+            $grid->disableEditButton();
+            $grid->disableViewButton();
+            $grid->disableBatchActions();
+            $grid->disableBatchDelete();
         });
     }
 

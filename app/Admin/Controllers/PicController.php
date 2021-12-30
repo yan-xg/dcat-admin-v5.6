@@ -26,7 +26,7 @@ class PicController extends AdminController
             }
 
             $grid->column('id', __('ID'));
-            $grid->column('pic_url')->image();
+            $grid->column('pic_url')->image(config('dictionary.goods.goods_url'));
             $grid->column('created_at');
             $grid->column('updated_at');
 

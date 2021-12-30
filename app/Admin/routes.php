@@ -14,8 +14,15 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+    //自定义图片上传接口
+    $router->any('goods/images', 'GoodsImageController@handle');
 
+    //商品
     $router->resource('category', 'CategoryController');
     $router->resource('goods', 'GoodsController');
     $router->resource('pic', 'PicController');
+
+    //用户
+    $router->resource('users', 'UserController');
+    $router->resource('address', 'UserAddressController');
 });

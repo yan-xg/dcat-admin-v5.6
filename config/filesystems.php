@@ -66,9 +66,9 @@ return [
 
         'goods_uploads' => [
             'driver' => 'local',
-            'root' => public_path('uploads/'.date('Ymd',time())),
+            'root' => public_path('uploads'),
             'visibility' => 'public',
-            'url' => env('APP_URL').'/uploads/'.date('Ymd',time()),
+            'url' => config('dictionary.goods.goods_url'),
         ],
 
     ],

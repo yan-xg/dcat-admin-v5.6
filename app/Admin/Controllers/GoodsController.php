@@ -57,6 +57,10 @@ class GoodsController extends AdminController
                 }
             });
 
+            $grid->selector(function (Grid\Tools\Selector $selector) {
+                $selector->selectOne('status', '状态', config('dictionary.goods.status'));
+            });
+
 
             $grid->disableViewButton();     //禁用查看按钮
         });
@@ -105,13 +109,14 @@ class GoodsController extends AdminController
             $form->tab('基本信息', function (Form $form) {
                 $form->column(6, function (Form $form) {
                     $categoryModel = config('admin.database.category_model');
+                    $goods_property = config('dictionary.goods.property');
 
                     $form->select('category_id')->options($categoryModel::selectOptions())->required();
                     $form->text('goods_name')->required()->saveAsString();
                     $form->text('goods_shorttitle')->saveAsString();
                     $form->tags('goods_keywords')->help('插入逗号(,)后回车，隔开字符')->saveAsString();
                     $form->checkbox('goods_property')
-                        ->options([1 => '推荐', 2 => '新品', '3' => '热卖'])
+                        ->options($goods_property)
                         ->saving(function ($value) {
                             // 转化成json字符串保存到数据库
                             return json_encode($value);
@@ -138,9 +143,9 @@ class GoodsController extends AdminController
                         ->accept('jpg,png,gif,jpeg', 'image/*')
                         ->autoUpload()
                         ->maxSize(1024)
-                        ->uniqueName()
                         ->disk('goods_uploads')
-                        ->saveAsJson()->help('只能上传图片');
+                        ->url('goods/images')
+                        ->help('只能上传图片,且大小不能超过1MB');
 
                     $form->text('pic_desc','描述');
                     $form->number('pic_order','排序');

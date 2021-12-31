@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\User;
 use App\Models\UserAddress;
+use App\Admin\Renderable\AmUserAddress;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
@@ -33,7 +34,9 @@ class UserController extends AdminController
             $grid->column('headimg')->image('','50','50');
             $grid->column('sex')->select($this->sex);
             $grid->column('ipone');
-            $grid->column('address','地址')->display('我的地址')->modal('我的地址', UserAddress::make());
+            $grid->column('address','地址')->display('我的地址')->modal('我的地址', function (Grid\Displayers\Modal $modal){
+                return AmUserAddress::make()->payload(['uid'=>$this->id]);
+            });
             $grid->column('status')->radio($this->status);
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();

@@ -22,12 +22,11 @@ class UserAddressController extends AdminController
             $grid->column('user.name','所属用户')->label('primary');
             $grid->column('shipping_user');
             $grid->column('shipping_ipone');
-            $grid->column('zip');
             $grid->column('province');
             $grid->column('city');
             $grid->column('district');
-            $grid->column('address');
-            $grid->column('is_default');
+            $grid->column('address')->limit(20);
+            $grid->column('is_default')->switch();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
 

@@ -16,7 +16,7 @@ class AmUserAddress extends LazyRenderable
             $grid->column('id', 'ID')->sortable();
             $grid->column('shipping_user','收货人');
             $grid->column('shipping_ipone','手机号');
-            $grid->column('province','身份');
+            $grid->column('province','省份');
             $grid->column('city','城市');
             $grid->column('district','区县');
             $grid->column('address','具体地址')->limit(10);

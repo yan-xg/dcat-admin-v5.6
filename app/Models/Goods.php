@@ -27,7 +27,7 @@ class Goods extends Model
     }
 
     /**
-     * 关联商品类型
+     * 关联商品类型（反向）
     **/
     public function category(){
         return $this->belongsTo(Category::class);

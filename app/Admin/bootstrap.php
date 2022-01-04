@@ -29,12 +29,16 @@ use Dcat\Admin\Repositories\Repository;
  */
 
 // 覆盖默认配置
-config(['admin' => user_admin_config()]);
-config(['app.locale' => config('admin.lang') ?: config('app.locale')]);
+config([
+    'admin.logo' => '<img src="'.admin_setting('url').'storage/'.admin_setting('logo').'" width="35"> &nbsp;'.admin_setting('name'),
+    'admin.logo-mini' => '<img src="'.admin_setting('url').'storage/'.admin_setting('logo').'" >',
+    'admin.name' => admin_setting('name','心选折扣仓'),
+    'admin.url' => admin_setting('url'),
+
+    ['admin' => user_admin_config()],
+]);
 
 Admin::navbar(function (Navbar $navbar) {
-
-
     $method = config('admin.layout.horizontal_menu') ? 'left' : 'right';
 
     // ajax请求不执行

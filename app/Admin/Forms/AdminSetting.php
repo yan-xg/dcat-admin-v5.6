@@ -48,8 +48,8 @@ class AdminSetting extends Form implements LazyRenderable
     public function form()
     {
         $this->text('name')->required()->help('网站名称');
-        $this->text('logo')->required()->help('logo设置');
-        $this->text('logo-mini', 'Logo mini')->required();
+        $this->url('url', '网站地址')->default(admin_setting('url'));
+        $this->image('logo')->accept('jpg,png,gif,jpeg')->maxSize(512)->required()->autoUpload()->help('logo设置,大小不要超过512K');
         $this->radio('lang', '语言')->required()->options(['en' => 'English', 'zh_CN' => '简体中文']);
         $this->radio('layout.color', '主题')
             ->required()

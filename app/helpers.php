@@ -9,10 +9,13 @@ if (! function_exists('user_admin_config')) {
         if (! $config = $session->get('admin.config')) {
             $config = config('admin');
 
-            $config['lang'] = config('app.locale');
+            $config['name'] = admin_setting('name');
+            $config['url'] = admin_setting('url');
+            $config['logo'] = admin_setting('logo');
+            $config['lang'] = admin_setting('locale',config('app.locale'));
         }
-
         if (is_array($key)) {
+            admin_setting($key); //添加到数据库
             // 保存
             foreach ($key as $k => $v) {
                 Arr::set($config, $k, $v);

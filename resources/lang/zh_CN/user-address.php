@@ -1,8 +1,8 @@
 <?php
 return [
     'labels' => [
-        'AmUserAddress' => '地址',
-        'users-address' => 'AmUserAddress',
+        'UserAddress' => '地址',
+        'users-address' => 'UserAddress',
     ],
     'fields' => [
         'uid' => '所属用户',

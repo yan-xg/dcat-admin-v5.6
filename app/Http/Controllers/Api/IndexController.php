@@ -14,9 +14,9 @@ class IndexController extends Controller
         $where['status'] = 1;
         $data = Goods::where($where)->select('id','category_id','goods_name','goods_shorttitle','goods_price')->get();
         foreach ($data as $v){
-            echo $v->goods_name.'<br>';
+            echo $v->id.'--'.$v->goods_name.'<br>';
             foreach ($v->goodsPic as $v2){
-                echo $v2.'---';
+                echo $v2.'<br>';
             }
         }
         die;

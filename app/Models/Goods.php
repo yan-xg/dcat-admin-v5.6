@@ -15,7 +15,7 @@ class Goods extends Model
     **/
     public function goodsPic()
     {
-        return $this->hasMany(Pic::class,'goods_id');
+        return $this->hasMany(Pic::class,'goods_id')->orderBy('is_master','desc');
     }
 
     /**

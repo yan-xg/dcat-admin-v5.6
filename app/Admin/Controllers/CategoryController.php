@@ -20,6 +20,7 @@ class CategoryController extends AdminController
         return Grid::make(new Category(), function (Grid $grid) {
             $grid->id('ID')->bold()->sortable();
             $grid->title->tree(); // 开启树状表格功能
+            $grid->icon->image('','50','50');
             $grid->order->orderable();
 
             $grid->created_at;
@@ -51,6 +52,7 @@ class CategoryController extends AdminController
             $show->field('parent_id');
             $show->field('order');
             $show->field('title');
+            $show->field('icon');
             $show->field('created_at');
             $show->field('updated_at');
         });
@@ -69,6 +71,11 @@ class CategoryController extends AdminController
             $form->select('parent_id')->options($categoryModel::selectOptions())->required();
             $form->text('order');
             $form->text('title')->required();
+            $form->image('icon')->accept('jpg,png,gif,jpeg', 'image/*')
+                ->autoUpload()
+                ->maxSize(512)
+                ->uniqueName()
+                ->help('只能上传图片,且大小不能超过512KB');
 
             $form->display('created_at');
             $form->display('updated_at');

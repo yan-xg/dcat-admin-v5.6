@@ -8,6 +8,7 @@ return [
         'parent_id' => '父级',
         'order' => '排序',
         'title' => '分类名称',
+        'icon' => '图标',
     ],
     'options' => [
     ],

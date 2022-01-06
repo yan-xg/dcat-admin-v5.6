@@ -1,16 +1,23 @@
-// const ApiRootUrl = 'http://localhost:8360/api/';
-// const ApiRootUrl = 'http://192.168.0.108:8360/api/';
-const ApiRootUrl = 'https://www.guxiaoling.com:8466/api/';
+const ApiRootUrl = 'http://dcat-admin-v56.cc/api/';
 
 module.exports = {
+    // 首页
+    IndexUrl: ApiRootUrl + 'index', //首页数据接口
+
+    // 分类
+    CategoryList: ApiRootUrl + 'category/list', //分类目录全部分类数据接口
+    GetCurrentList: ApiRootUrl + 'category/currentlist',
+
+    // 商品
+    GoodsCount: ApiRootUrl + 'goods/count', //统计商品总数
+    // GoodsDetail: ApiRootUrl + 'goods/detail', //获得商品的详情
+    // GoodsList: ApiRootUrl + 'goods/list', //获得商品列表
+    // GoodsShare: ApiRootUrl + 'goods/goodsShare', //获得商品的详情
+    // SaveUserId: ApiRootUrl + 'goods/saveUserId',
+
     // 登录
     AuthLoginByWeixin: ApiRootUrl + 'auth/loginByWeixin', //微信登录
-    // 首页
-    IndexUrl: ApiRootUrl + 'index/appInfo', //首页数据接口
-    // 分类
-    CatalogList: ApiRootUrl + 'catalog/index', //分类目录全部分类数据接口
-    CatalogCurrent: ApiRootUrl + 'catalog/current', //分类目录当前分类数据接口
-    GetCurrentList: ApiRootUrl + 'catalog/currentlist',
+    
     // 购物车
     CartAdd: ApiRootUrl + 'cart/add', // 添加商品到购物车
     CartList: ApiRootUrl + 'cart/index', //获取购物车的数据
@@ -19,12 +26,7 @@ module.exports = {
     CartChecked: ApiRootUrl + 'cart/checked', // 选择或取消选择商品
     CartGoodsCount: ApiRootUrl + 'cart/goodsCount', // 获取购物车商品件数
     CartCheckout: ApiRootUrl + 'cart/checkout', // 下单前信息确认
-    // 商品
-    GoodsCount: ApiRootUrl + 'goods/count', //统计商品总数
-    GoodsDetail: ApiRootUrl + 'goods/detail', //获得商品的详情
-    GoodsList: ApiRootUrl + 'goods/list', //获得商品列表
-    GoodsShare: ApiRootUrl + 'goods/goodsShare', //获得商品的详情
-    SaveUserId: ApiRootUrl + 'goods/saveUserId',
+    
     // 收货地址
     AddressDetail: ApiRootUrl + 'address/addressDetail', //收货地址详情
     DeleteAddress: ApiRootUrl + 'address/deleteAddress', //保存收货地址
@@ -49,7 +51,7 @@ module.exports = {
     SearchIndex: ApiRootUrl + 'search/index', //搜索页面数据
     SearchHelper: ApiRootUrl + 'search/helper', //搜索帮助
     SearchClearHistory: ApiRootUrl + 'search/clearHistory', //搜索帮助
-    ShowSettings: ApiRootUrl + 'settings/showSettings',
+
     SaveSettings: ApiRootUrl + 'settings/save',
     SettingsDetail: ApiRootUrl + 'settings/userDetail',
     GetBase64: ApiRootUrl + 'qrcode/getBase64', //获取商品详情二维码

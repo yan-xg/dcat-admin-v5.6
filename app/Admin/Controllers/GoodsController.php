@@ -26,6 +26,7 @@ class GoodsController extends AdminController
             $grid->column('category.title','类别')->label('default');
             $grid->column('goods_name')->limit(15);
             $grid->column('goods_shorttitle');
+            $grid->column('goods_property')->checkbox(config('dictionary.goods.property'));
             $grid->column('goods_price');
             $grid->column('goods_original_price');
             $grid->column('goods_cost');
@@ -118,8 +119,7 @@ class GoodsController extends AdminController
                     $form->checkbox('goods_property')
                         ->options($goods_property)
                         ->saving(function ($value) {
-                            // 转化成json字符串保存到数据库
-                            return json_encode($value);
+                            return implode(',',$value);
                         })->canCheckAll();
                 });
 

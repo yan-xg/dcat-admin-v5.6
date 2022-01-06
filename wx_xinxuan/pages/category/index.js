@@ -12,24 +12,13 @@ Page({
         list: [],
         allPage: 1,
         allCount: 0,
-        size: 8,
+        size: 'a',
         hasInfo: 0,
         showNoMore: 0,
         loading:0,
         index_banner_img:0,
     },
     onLoad: function(options) {
-    },
-    getChannelShowInfo: function (e) {
-        let that = this;
-        util.request(api.ShowSettings).then(function (res) {
-            if (res.errno === 0) {
-                let index_banner_img = res.data.index_banner_img;
-                that.setData({
-                    index_banner_img: index_banner_img
-                });
-            }
-        });
     },
     onPullDownRefresh: function() {
         wx.showNavigationBarLoading()
@@ -40,7 +29,7 @@ Page({
     getCatalog: function() {
         //CatalogList
         let that = this;
-        util.request(api.CatalogList).then(function(res) {
+        util.request(api.CategoryList).then(function(res) {
             that.setData({
                 navList: res.data.categoryList,
             });
@@ -51,23 +40,16 @@ Page({
             });
         });
     },
-    getCurrentCategory: function(id) {
-        let that = this;
-        util.request(api.CatalogCurrent, {
-            id: id
-        }).then(function(res) {
-            that.setData({
-                currentCategory: res.data
-            });
-        });
-    },
+    
     getCurrentList: function(id) {
         let that = this;
         util.request(api.GetCurrentList, {
             size: that.data.size,
             page: that.data.allPage,
-            id: id
+            category_id: id
         }, 'POST').then(function(res) {
+            console.log(res);
+            return false;
             if (res.errno === 0) {
                 let count = res.data.count;
                 that.setData({
@@ -87,7 +69,6 @@ Page({
         });
     },
     onShow: function() {
-        this.getChannelShowInfo();
         let id = this.data.nowId;
         let nowId = wx.getStorageSync('categoryId');
         if(id == 0 && nowId === 0){
@@ -116,7 +97,6 @@ Page({
                 loading: 1
             })
             this.getCurrentList(nowId);
-            this.getCurrentCategory(nowId);
             this.setData({
                 nowId: nowId
             })
@@ -146,7 +126,6 @@ Page({
             } else {
                 wx.setStorageSync('categoryId', id)
                 this.getCurrentList(id);
-                this.getCurrentCategory(id);
             }
             wx.setStorageSync('categoryId', id)
             this.setData({

@@ -39,7 +39,7 @@
         "minifyWXML": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.9.4",
+    "libVersion": "2.21.2",
     "appid": "wxf3d768d1818218f1",
     "projectname": "%E5%BF%83%E9%80%89%E6%8A%98%E6%89%A3%E4%BB%93",
     "isGameTourist": false,

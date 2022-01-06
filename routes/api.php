@@ -17,4 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//小程序首页
 Route::get('index','Api\IndexController@index');
+
+// 商品
+Route::get('goods/count','Api\GoodsController@count');
+
+// 分类
+Route::get('category/list','Api\CategoryController@list');
+Route::post('category/currentlist','Api\CategoryController@currentlist');

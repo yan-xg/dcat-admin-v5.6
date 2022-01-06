@@ -70,31 +70,18 @@ Page({
     getIndexData: function () {
         let that = this;
         util.request(api.IndexUrl).then(function (res) {
-            if (res.errno === 0) {
+            if (res.code == 200) {
                 that.setData({
                     floorGoods: res.data.categoryList,
                     banner: res.data.banner,
-                    channel: res.data.channel,
-                    notice: res.data.notice,
+                    channel: res.data.categoryList,
                     loading: 1,
                 });
-                let cartGoodsCount = '';
-                if (res.data.cartCount == 0) {
-                    wx.removeTabBarBadge({
-                        index: 2,
-                    })
-                } else {
-                    cartGoodsCount = res.data.cartCount + '';
-                    wx.setTabBarBadge({
-                        index: 2,
-                        text: cartGoodsCount
-                    })
-                }
             }
         });
     },
     onLoad: function (options) {
-        this.getChannelShowInfo();
+        
     },
     onShow: function () {
         this.getIndexData();
@@ -113,23 +100,7 @@ Page({
         });
         wx.removeStorageSync('categoryId');
     },
-    getChannelShowInfo: function (e) {
-        let that = this;
-        util.request(api.ShowSettings).then(function (res) {
-            if (res.errno === 0) {
-                let show_channel = res.data.channel;
-                let show_banner = res.data.banner;
-                let show_notice = res.data.notice;
-                let index_banner_img = res.data.index_banner_img;
-                that.setData({
-                    show_channel: show_channel,
-                    show_banner: show_banner,
-                    show_notice: show_notice,
-                    index_banner_img: index_banner_img
-                });
-            }
-        });
-    },
+    
     onPullDownRefresh: function () {
         wx.showNavigationBarLoading()
         this.getIndexData();

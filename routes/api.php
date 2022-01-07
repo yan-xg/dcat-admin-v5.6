@@ -26,3 +26,7 @@ Route::get('goods/count','Api\GoodsController@count');
 // 分类
 Route::get('category/list','Api\CategoryController@list');
 Route::post('category/currentlist','Api\CategoryController@currentlist');
+
+//搜索
+Route::get('search/index','Api\SearchController@index');
+Route::post('search/helper','Api\SearchController@helper');

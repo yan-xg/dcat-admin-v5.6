@@ -10,9 +10,10 @@ Page({
         nowIndex: 0,
         nowId: 0,
         list: [],
-        allPage: 1,
-        allCount: 0,
-        size: 'a',
+        currentPage: 1,//当前页
+        maxPage:0,//最大页
+        allCount: 0,//商品总量
+        size: 8,//每页数量
         hasInfo: 0,
         showNoMore: 0,
         loading:0,
@@ -45,16 +46,15 @@ Page({
         let that = this;
         util.request(api.GetCurrentList, {
             size: that.data.size,
-            page: that.data.allPage,
+            page: that.data.currentPage,
             category_id: id
         }, 'POST').then(function(res) {
-            console.log(res);
-            return false;
-            if (res.errno === 0) {
-                let count = res.data.count;
+            if (res.code == 200) {
+                let count = res.data.total;
                 that.setData({
                     allCount: count,
-                    allPage: res.data.currentPage,
+                    currentPage: res.data.current_page,
+                    maxPage:res.data.last_page,
                     list: that.data.list.concat(res.data.data),
                     showNoMore: 1,
                     loading: 0,
@@ -77,7 +77,7 @@ Page({
         else if (nowId == 0 && nowId === '') {
             this.setData({
                 list: [],
-                allPage: 1,
+                currentPage: 1,
                 allCount: 0,
                 size: 8,
                 loading: 1
@@ -91,7 +91,7 @@ Page({
         } else if(id != nowId) {
             this.setData({
                 list: [],
-                allPage: 1,
+                currentPage: 1,
                 allCount: 0,
                 size: 8,
                 loading: 1
@@ -113,7 +113,7 @@ Page({
         } else {
             this.setData({
                 list: [],
-                allPage: 1,
+                currentPage: 1,
                 allCount: 0,
                 size: 8,
                 loading: 1
@@ -135,14 +135,17 @@ Page({
     },
     onBottom: function() {
         let that = this;
-        if (that.data.allCount / that.data.size < that.data.allPage) {
+        console.log(that.data.allCount);
+        console.log(that.data.size);
+        console.log(that.data.currentPage);
+        if (that.data.maxPage <= that.data.currentPage) {
             that.setData({
                 showNoMore: 0
             });
             return false;
         }
         that.setData({
-            allPage: that.data.allPage + 1
+            currentPage: that.data.currentPage + 1
         });
         let nowId = that.data.nowId;
         if (nowId == 0 || nowId == undefined) {

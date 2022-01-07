@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Goods;
+use Validator;
 use App\Http\Controllers\Api\ApiController;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Validator;
 
 class CategoryController extends ApiController
 {
@@ -28,11 +29,27 @@ class CategoryController extends ApiController
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            return 'error';
-            return redirect('post/create')->withErrors($validator)->withInput();
+            return $validator->errors()->first();
         }
 
-//        $postDate = input::only(['page','size','category_id']);
-//        return $category_id;
+        $where['status'] = 1;
+        $category_id = input::get('category_id',0);
+        if($category_id != 0){
+            $where['category_id'] = $category_id;
+        }
+
+        $size = input::get('size',8);
+//        $page = input::get('page',1);
+//        $offset = ($page-1)*$size;
+
+        $goods = Goods::where($where)->orderBy('id','desc')->paginate($size);
+        foreach ($goods as $gk=>$gv){
+            foreach ($gv->goodsPic as $pk=>$pv){
+                if($pk == 0){
+                    $goods[$gk]['pic'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
+                }
+            }
+        }
+        return $this->success($goods);
     }
 }

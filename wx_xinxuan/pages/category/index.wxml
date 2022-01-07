@@ -18,22 +18,22 @@
                     <view class="goods-box {{(index+1)%2 == 0?'no-margin':''}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="id">
                         <navigator hover-class='none' class='navi-url' url="/pages/goods/goods?id={{item.id}}">
                             <view class="box">
-                                <image src="{{item.list_pic_url}}" class="image">
-                                    <view wx:if="{{item.is_new == 1}}" class='new-tag'>新品</view>
+                                <image src="{{item.pic}}" class="image">
+                                    <!-- <view wx:if="{{item.is_new == 1}}" class='new-tag'>新品</view> -->
                                 </image>
-                                <block wx:if="{{item.goods_number <= 0}}">
+                                <block wx:if="{{item.goods_cost <= 0}}">
                                     <view class='no-goods-mask'></view> 
                                     <view class='sold-img'>
                                         <image class='soldout' src='/images/icon/sold-out.png'></image>
                                     </view>
                                 </block>
                             </view>
-                            <view class="goods-info {{item.goods_number <= 0?'fast-out-status':''}}">
-                                <view class="goods-title">{{item.name}}</view>
-                                <view class="goods-intro">{{item.goods_brief}}</view>
+                            <view class="goods-info {{item.goods_cost <= 0?'fast-out-status':''}}">
+                                <view class="goods-title">{{item.goods_name}}</view>
+                                <view class="goods-intro">{{item.goods_keywords}}</view>
                                 <view class='price-container'>
                                     <view class='l'>
-                                        <view class='h'>￥{{item.min_retail_price}}</view>
+                                        <view class='h'>￥{{item.goods_price}}</view>
                                     </view>
                                 </view>
                             </view>

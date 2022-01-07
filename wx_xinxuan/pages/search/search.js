@@ -29,12 +29,13 @@ Page({
         });
     },
     onLoad: function () {
-        this.getSearchKeyword();
+        // 点击搜索展示默认，搜索历史，热门搜索
+        // this.getSearchKeyword();
     },
     getSearchKeyword() {
         let that = this;
         util.request(api.SearchIndex).then(function (res) {
-            if (res.errno === 0) {
+            if (res.code == 200) {
                 that.setData({
                     historyKeyword: res.data.historyKeywordList,
                     defaultKeyword: res.data.defaultKeyword,
@@ -44,6 +45,7 @@ Page({
         });
     },
 
+    // 文本框搜索
     inputChange: function (e) {
         this.setData({
             keyword: e.detail.value,
@@ -53,8 +55,8 @@ Page({
     },
     getHelpKeyword: function () {
         let that = this;
-        util.request(api.SearchHelper, { keyword: that.data.keyword }).then(function (res) {
-            if (res.errno === 0) {
+        util.request(api.SearchHelper, { keyword: that.data.keyword }, 'POST').then(function (res) {
+            if (res.code == 200) {
                 that.setData({
                     helpKeyword: res.data
                 });
@@ -71,15 +73,17 @@ Page({
             this.getHelpKeyword();
         }
     },
-    clearHistory: function () {
-        this.setData({
-            historyKeyword: []
-        })
+    //清除历史记录
+    // clearHistory: function () {
+    //     this.setData({
+    //         historyKeyword: []
+    //     })
 
-        util.request(api.SearchClearHistory, {}, 'POST')
-            .then(function (res) {
-            });
-    },
+    //     util.request(api.SearchClearHistory, {}, 'POST')
+    //         .then(function (res) {
+    //         });
+    // },
+
     getGoodsList: function () {
         let that = this;
         util.request(api.GoodsList, { keyword: that.data.keyword,sort: that.data.currentSortType, order: that.data.currentSortOrder, sales: that.data.salesSortOrder}).then(function (res) {

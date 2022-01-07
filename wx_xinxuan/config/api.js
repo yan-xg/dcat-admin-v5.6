@@ -6,7 +6,7 @@ module.exports = {
 
     // 分类
     CategoryList: ApiRootUrl + 'category/list', //分类目录全部分类数据接口
-    GetCurrentList: ApiRootUrl + 'category/currentlist',
+    GetCurrentList: ApiRootUrl + 'category/currentlist',//对应分类下商品
 
     // 商品
     GoodsCount: ApiRootUrl + 'goods/count', //统计商品总数
@@ -14,6 +14,11 @@ module.exports = {
     // GoodsList: ApiRootUrl + 'goods/list', //获得商品列表
     // GoodsShare: ApiRootUrl + 'goods/goodsShare', //获得商品的详情
     // SaveUserId: ApiRootUrl + 'goods/saveUserId',
+
+    // 搜索
+    SearchHelper: ApiRootUrl + 'search/helper', //搜索
+    // SearchIndex: ApiRootUrl + 'search/index', //搜索页面默认数据
+    // SearchClearHistory: ApiRootUrl + 'search/clearHistory', //历史记录
 
     // 登录
     AuthLoginByWeixin: ApiRootUrl + 'auth/loginByWeixin', //微信登录
@@ -47,10 +52,6 @@ module.exports = {
     // 足迹
     FootprintList: ApiRootUrl + 'footprint/list', //足迹列表
     FootprintDelete: ApiRootUrl + 'footprint/delete', //删除足迹
-    // 搜索
-    SearchIndex: ApiRootUrl + 'search/index', //搜索页面数据
-    SearchHelper: ApiRootUrl + 'search/helper', //搜索帮助
-    SearchClearHistory: ApiRootUrl + 'search/clearHistory', //搜索帮助
 
     SaveSettings: ApiRootUrl + 'settings/save',
     SettingsDetail: ApiRootUrl + 'settings/userDetail',

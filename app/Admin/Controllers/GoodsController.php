@@ -115,7 +115,10 @@ class GoodsController extends AdminController
                     $form->select('category_id')->options($categoryModel::selectOptions())->required();
                     $form->text('goods_name')->required()->saveAsString();
                     $form->text('goods_shorttitle')->saveAsString();
-                    $form->tags('goods_keywords')->help('插入逗号(,)后回车，隔开字符')->saveAsString();
+                    $form->tags('goods_keywords')
+                        ->saving(function ($value) {
+                            return implode(',',$value);
+                        })->help('插入逗号(,)后回车，隔开字符');
                     $form->checkbox('goods_property')
                         ->options($goods_property)
                         ->saving(function ($value) {

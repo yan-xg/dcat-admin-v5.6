@@ -22,11 +22,13 @@ Route::get('index','Api\IndexController@index');
 
 // 商品
 Route::get('goods/count','Api\GoodsController@count');
+Route::post('goods/searchlist','Api\GoodsController@searchList');
+Route::post('goods/detail','Api\GoodsController@detail');
 
 // 分类
 Route::get('category/list','Api\CategoryController@list');
 Route::post('category/currentlist','Api\CategoryController@currentlist');
 
 //搜索
-Route::get('search/index','Api\SearchController@index');
+Route::get('search/index','Api\SearchController@index');// 未使用
 Route::post('search/helper','Api\SearchController@helper');

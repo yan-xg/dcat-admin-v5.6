@@ -37,9 +37,9 @@ Page({
         util.request(api.SearchIndex).then(function (res) {
             if (res.code == 200) {
                 that.setData({
-                    historyKeyword: res.data.historyKeywordList,
-                    defaultKeyword: res.data.defaultKeyword,
-                    hotKeyword: res.data.hotKeywordList
+                    // historyKeyword: res.data.historyKeywordList,
+                    defaultKeyword: res.data.keyword,
+                    // hotKeyword: res.data.hotKeywordList
                 });
             }
         });
@@ -68,11 +68,11 @@ Page({
             searchStatus: false,
             goodsList: []
         });
-
         if (this.data.keyword) {
             this.getHelpKeyword();
         }
     },
+
     //清除历史记录
     // clearHistory: function () {
     //     this.setData({
@@ -86,8 +86,9 @@ Page({
 
     getGoodsList: function () {
         let that = this;
-        util.request(api.GoodsList, { keyword: that.data.keyword,sort: that.data.currentSortType, order: that.data.currentSortOrder, sales: that.data.salesSortOrder}).then(function (res) {
-            if (res.errno === 0) {
+        console.log(that.data);
+        util.request(api.GoodsList, { keyword: that.data.keyword, sort: that.data.currentSortType, order: that.data.currentSortOrder, sales: that.data.salesSortOrder},'POST').then(function (res) {
+            if (res.code == 200) {
                 that.setData({
                     searchStatus: true,
                     // categoryFilter: false,
@@ -96,9 +97,10 @@ Page({
                     // page: res.data.currentPage,
                     //   size: res.data.numsPerPage
                 });
+            }else{
+                //重新获取关键词
+                that.getSearchKeyword();
             }
-            //重新获取关键词
-            that.getSearchKeyword();
         });
     },
     onKeywordTap: function (event) {
@@ -123,7 +125,7 @@ Page({
                     _SortOrder = 'desc';
                 }
                 this.setData({
-                    'currentSortType': 'sales',
+                    'currentSortType': 'goods_stock',
                     'currentSortOrder': 'asc',
                     'salesSortOrder': _SortOrder
                 });
@@ -135,7 +137,7 @@ Page({
                     tmpSortOrder = 'desc';
                 }
                 this.setData({
-                    'currentSortType': 'price',
+                    'currentSortType': 'goods_price',
                     'currentSortOrder': tmpSortOrder,
                     'salesSortOrder': 'asc'
                 });

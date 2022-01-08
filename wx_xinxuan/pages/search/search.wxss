@@ -151,6 +151,9 @@ page {
     font-size: 24rpx;
     color: #333;
     border-bottom: 1px solid #f4f4f4;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .sort {
@@ -382,7 +385,7 @@ page {
 
 .goods-box .navi-url .goods-info .price-container .l {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     /* width: 250rpx; */
 }
 
@@ -394,6 +397,13 @@ page {
 .goods-box .navi-url .goods-info .price-container .r .cart-img {
     width: 46rpx;
     height: 46rpx;
+}
+
+.goods-box .navi-url .goods-info .price-container .l .stock {
+    font-size: 22rpx;
+    color: #999;
+    font-weight: 500;
+    padding-top: 0.3ch;
 }
 
 .goods-box .navi-url .goods-info .price-container .l .h {

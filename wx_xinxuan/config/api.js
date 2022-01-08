@@ -10,8 +10,8 @@ module.exports = {
 
     // 商品
     GoodsCount: ApiRootUrl + 'goods/count', //统计商品总数
-    // GoodsDetail: ApiRootUrl + 'goods/detail', //获得商品的详情
-    // GoodsList: ApiRootUrl + 'goods/list', //获得商品列表
+    GoodsList: ApiRootUrl + 'goods/searchlist', //获得商品列表
+    GoodsDetail: ApiRootUrl + 'goods/detail', //获得商品的详情
     // GoodsShare: ApiRootUrl + 'goods/goodsShare', //获得商品的详情
     // SaveUserId: ApiRootUrl + 'goods/saveUserId',
 
@@ -20,6 +20,10 @@ module.exports = {
     // SearchIndex: ApiRootUrl + 'search/index', //搜索页面默认数据
     // SearchClearHistory: ApiRootUrl + 'search/clearHistory', //历史记录
 
+
+
+
+/*
     // 登录
     AuthLoginByWeixin: ApiRootUrl + 'auth/loginByWeixin', //微信登录
     
@@ -56,5 +60,6 @@ module.exports = {
     SaveSettings: ApiRootUrl + 'settings/save',
     SettingsDetail: ApiRootUrl + 'settings/userDetail',
     GetBase64: ApiRootUrl + 'qrcode/getBase64', //获取商品详情二维码
+    */
 
 };

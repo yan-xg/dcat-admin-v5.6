@@ -21,7 +21,7 @@ trait ApiResponse
      */
     public function fail($data)
     {
-        return $this->api_response('500','操作失败',$data=[]);
+        return $this->api_response('500','操作失败',$data);
     }
 
     /**

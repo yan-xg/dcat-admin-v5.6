@@ -30,14 +30,7 @@ class SearchController extends ApiController
         $where['status'] = 1;
         $where[] = ['goods_name', 'like', '%'.$keyword.'%'];
 
-        $goods = Goods::where($where)->get();
-        foreach ($goods as $gk=>$gv){
-            foreach ($gv->goodsPic as $pk=>$pv){
-                if($pk == 0){
-                    $goods[$gk]['pic'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
-                }
-            }
-        }
+        $goods = Goods::where($where)->select('goods_name')->get();
         return $this->success($goods);
     }
 }

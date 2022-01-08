@@ -95,9 +95,10 @@ Page({
     getGoodsInfo: function() {
         let that = this;
         util.request(api.GoodsDetail, {
-            id: that.data.id
-        }).then(function(res) {
-            if (res.errno === 0) {
+            gid: that.data.id
+        },'POST').then(function(res) {
+            if (res.code == 200) {
+                /*
                 let _specificationList = res.data.specificationList;
                 // 如果仅仅存在一种货品，那么商品页面初始化时默认checked
                 if (_specificationList.valueList.length == 1) {
@@ -110,25 +111,25 @@ Page({
                     that.setData({
                         checkedSpecText: '请选择规格和数量'
                     });
-                }
+                }*/
                 let galleryImages = [];
-                for (const item of res.data.gallery) {
-                    galleryImages.push(item.img_url);
+                for (const item of res.data.goods_pic) {
+                    galleryImages.push(item.pic_url);
                 }
                 that.setData({
-                    goods: res.data.info,
-                    goodsNumber: res.data.info.goods_number,
-                    gallery: res.data.gallery,
-                    specificationList: res.data.specificationList,
-                    productList: res.data.productList,
-                    checkedSpecPrice: res.data.info.retail_price,
+                    goods: res.data,
+                    goodsNumber: res.data.goods_sell_num,
+                    gallery: res.data.goods_pic,
+                    specificationList: res.data,
+                    productList: res.data.goods_spec,
+                    checkedSpecPrice: res.data.goods_pic,
                     galleryImages: galleryImages,
                     loading:1
                 });
                 setTimeout(() => {
-                    WxParse.wxParse('goodsDetail', 'html', res.data.info.goods_desc, that);
+                    WxParse.wxParse('goodsDetail', 'html', res.data.goods_description, that);
                 }, 1000);
-                wx.setStorageSync('goodsImage', res.data.info.https_pic_url);
+                wx.setStorageSync('goodsImage', res.data.goods_pic.pic_url);
             }
             else{
                 util.showErrorToast(res.errmsg)
@@ -324,7 +325,7 @@ Page({
             sysHeight: sysHeight
         })
         this.getGoodsInfo();
-        this.getCartCount();
+        // this.getCartCount();
     },
     onHide:function(){
         this.setData({

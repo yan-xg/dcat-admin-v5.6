@@ -98,20 +98,23 @@ Page({
             gid: that.data.id
         },'POST').then(function(res) {
             if (res.code == 200) {
+                that.setData({
+                    checkedSpecText: '产品参数'
+                });
                 /*
-                let _specificationList = res.data.specificationList;
+                let _specificationList = res.data.goods_spec;
                 // 如果仅仅存在一种货品，那么商品页面初始化时默认checked
-                if (_specificationList.valueList.length == 1) {
-                    _specificationList.valueList[0].checked = true
+                if (_specificationList.length == 1) {
+                    _specificationList[0].checked = true
                     that.setData({
-                        checkedSpecText: '已选择：' + _specificationList.valueList[0].value,
-                        tmpSpecText: '已选择：' + _specificationList.valueList[0].value,
+                        checkedSpecText: '已选择：' + _specificationList[0].value,
+                        tmpSpecText: '已选择：' + _specificationList[0].value,
                     });
                 } else {
                     that.setData({
-                        checkedSpecText: '请选择规格和数量'
+                        checkedSpecText: '查看规格与数量'
                     });
-                }*/
+                } */
                 let galleryImages = [];
                 for (const item of res.data.goods_pic) {
                     galleryImages.push(item.pic_url);
@@ -120,9 +123,9 @@ Page({
                     goods: res.data,
                     goodsNumber: res.data.goods_sell_num,
                     gallery: res.data.goods_pic,
-                    specificationList: res.data,
+                    specificationList: res.data.goods_spec,
                     productList: res.data.goods_spec,
-                    checkedSpecPrice: res.data.goods_pic,
+                    checkedSpecPrice: res.data.goods_price,
                     galleryImages: galleryImages,
                     loading:1
                 });
@@ -229,11 +232,12 @@ Page({
                 tmpSpecText: '请选择规格和数量',
                 priceChecked: false
             });
-        }
+        }goods_spec
 
         if (this.isCheckedAllSpec()) {
+            console.log(this.data.goods_spec)
             this.setData({
-                checkedSpecText: this.data.tmpSpecText
+                checkedSpecText: this.data.goods_spec
             });
 
             // 点击规格的按钮后

@@ -16,6 +16,7 @@ return [
         'goods_cost' => '成本',
         'goods_sell_num' => '已出售数',
         'goods_stock' => '库存',
+        'goods_unit' => '商品单位',
         'status' => '是否上架',
     ],
     'options' => [

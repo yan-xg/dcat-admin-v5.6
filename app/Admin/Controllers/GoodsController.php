@@ -32,6 +32,7 @@ class GoodsController extends AdminController
             $grid->column('goods_cost');
             $grid->column('goods_sell_num');
             $grid->column('goods_stock');
+            $grid->column('goods_unit');
             $grid->column('status')->switch();
             $grid->column('created_at','上架时间');
             $grid->column('updated_at')->sortable();
@@ -124,6 +125,7 @@ class GoodsController extends AdminController
                         ->saving(function ($value) {
                             return implode(',',$value);
                         })->canCheckAll();
+                    $form->text('goods_unit')->required()->help('填写 箱/件/卷 等');
                 });
 
                 $form->column(6, function (Form $form) {

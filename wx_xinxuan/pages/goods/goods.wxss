@@ -727,8 +727,9 @@
     background: #fff;
     position: fixed;
     z-index: 9;
-    bottom: 100rpx;
+    bottom: 0rpx;
     box-sizing: border-box;
+    border-radius:20rpx 20rpx 0rpx 0rpx;
 }
 
 .attr-pop .temp-tip {
@@ -1046,4 +1047,27 @@ button::after {
     font-size: 26rpx;
     height: 40rpx;
     line-height: 40rpx;
+}
+
+.attr-pop .product-code{
+    text-align: center;
+    font-size: 33rpx;
+    color: #333;
+}
+.attr-pop .goods_spec{
+    text-align: center;
+    font-size: 33rpx;
+    color: #999;
+}
+.attr-pop .goods_spec .l{
+    width: 20%;
+    float: left;
+    display: flex;
+    margin-left: 10%;
+}
+.attr-pop .goods_spec .r{
+    width: 60%;
+    float: left;
+    display: flex;
+    color: #000;
 }

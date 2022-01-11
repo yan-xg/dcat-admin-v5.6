@@ -67,7 +67,7 @@ class AdminSetting extends Form implements LazyRenderable
             ])
             ->help('切换菜单布局');
 //        $this->switch('https', '启用HTTPS');
-        $this->switch('helpers.enable', '开发工具');
+//        $this->switch('helpers.enable', '开发工具')->default(false);
     }
 
     /**

@@ -69,8 +69,8 @@ class CategoryController extends AdminController
             $categoryModel = config('admin.database.category_model');
             $form->display('id');
             $form->select('parent_id')->options($categoryModel::selectOptions())->required();
-            $form->text('order');
             $form->text('title')->required();
+            $form->text('order');
             $form->image('icon')->accept('jpg,png,gif,jpeg', 'image/*')
                 ->autoUpload()
                 ->maxSize(512)

@@ -1,4 +1,4 @@
-const ApiRootUrl = 'http://dcat-admin-v56.cc/api/';
+const ApiRootUrl = 'http://xz.xingzan66.com/api/';
 
 module.exports = {
     // 首页

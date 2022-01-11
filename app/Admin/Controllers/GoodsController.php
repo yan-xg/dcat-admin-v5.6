@@ -139,7 +139,7 @@ class GoodsController extends AdminController
 
             })->tab('描述', function (Form $form) {
 
-                $form->editor('goods_description')->saveAsString();
+                $form->editor('goods_description')->required()->saveAsString();
 
             })->tab('商品图片', function (Form $form) {
 

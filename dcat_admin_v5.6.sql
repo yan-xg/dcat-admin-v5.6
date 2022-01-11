@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2021-12-31 15:37:25
+Date: 2022-01-11 14:10:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -170,6 +170,21 @@ CREATE TABLE `admin_role_menu` (
 -- ----------------------------
 -- Records of admin_role_menu
 -- ----------------------------
+INSERT INTO `admin_role_menu` VALUES ('1', '1', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '2', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '3', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '4', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '5', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '6', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '7', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '8', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '9', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '10', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '11', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '12', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '13', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '14', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_menu` VALUES ('1', '15', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
 
 -- ----------------------------
 -- Table structure for admin_role_permissions
@@ -186,6 +201,11 @@ CREATE TABLE `admin_role_permissions` (
 -- ----------------------------
 -- Records of admin_role_permissions
 -- ----------------------------
+INSERT INTO `admin_role_permissions` VALUES ('1', '2', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_permissions` VALUES ('1', '3', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_permissions` VALUES ('1', '4', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_permissions` VALUES ('1', '5', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
+INSERT INTO `admin_role_permissions` VALUES ('1', '6', '2022-01-06 11:10:34', '2022-01-06 11:10:34');
 
 -- ----------------------------
 -- Table structure for admin_role_users
@@ -219,6 +239,12 @@ CREATE TABLE `admin_settings` (
 -- ----------------------------
 -- Records of admin_settings
 -- ----------------------------
+INSERT INTO `admin_settings` VALUES ('name', '心选折扣仓', '2022-01-04 14:35:42', '2022-01-04 14:35:42');
+INSERT INTO `admin_settings` VALUES ('url', 'http://dcat-admin-v56.cc/', '2022-01-04 14:35:42', '2022-01-04 14:35:42');
+INSERT INTO `admin_settings` VALUES ('logo', 'images/4ceab01799b05a3f2429df968e0f84da.jpg', '2022-01-04 14:35:42', '2022-01-04 14:35:42');
+INSERT INTO `admin_settings` VALUES ('lang', 'zh_CN', '2022-01-04 14:35:42', '2022-01-04 14:35:42');
+INSERT INTO `admin_settings` VALUES ('layout', '{\"body_class\":[\"sidebar-separate\"],\"color\":\"green\",\"sidebar_style\":\"primary\",\"horizontal_menu\":false}', '2022-01-04 14:35:42', '2022-01-04 14:35:42');
+INSERT INTO `admin_settings` VALUES ('helpers', '{\"enable\":1}', '2022-01-04 14:35:42', '2022-01-04 14:35:42');
 
 -- ----------------------------
 -- Table structure for admin_users
@@ -240,7 +266,7 @@ CREATE TABLE `admin_users` (
 -- ----------------------------
 -- Records of admin_users
 -- ----------------------------
-INSERT INTO `admin_users` VALUES ('1', 'admin', '$2y$10$Du7nu/lgTAxu.3dB8LBd6uSsSwLkrt/lrp7Gv0huzq1uGYMu05bNy', 'Administrator', 'images/da6c1ed72d861434dab88fb1844b4f7b.jpeg', 'e4NSOXeYQbZqosLaZey036jvYuK3rahQPfv35zXJZQiZfR4BMDiMDldsNFmD', '2021-12-25 06:08:52', '2021-12-28 15:58:48');
+INSERT INTO `admin_users` VALUES ('1', 'admin', '$2y$10$uqclcXC..nls/j3jaD9pNOlJPhhiP3upiH6COj.BP/1F66iVM0bSi', 'Administrator', 'images/da6c1ed72d861434dab88fb1844b4f7b.jpeg', '5VN8fGISNLSFM9dSuiFIKhRUAxymwsbU0Sbuld1lHqX8qF50rcP1ARpGYnGb', '2021-12-25 06:08:52', '2022-01-11 11:03:19');
 
 -- ----------------------------
 -- Table structure for category
@@ -251,19 +277,22 @@ CREATE TABLE `category` (
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `order` int(11) NOT NULL DEFAULT '0',
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `icon` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('1', '0', '0', '粮油', '2021-12-25 15:15:36', '2021-12-28 16:17:27');
-INSERT INTO `category` VALUES ('2', '0', '1', '米面', '2021-12-25 15:17:22', '2021-12-28 16:17:30');
-INSERT INTO `category` VALUES ('3', '0', '2', '零食', '2021-12-25 15:17:44', '2021-12-28 16:17:30');
-INSERT INTO `category` VALUES ('4', '1', '3', '金龙鱼', '2021-12-25 15:28:59', '2021-12-25 15:47:52');
-INSERT INTO `category` VALUES ('5', '0', '4', '清洁', '2021-12-25 15:46:22', '2021-12-25 15:47:26');
+INSERT INTO `category` VALUES ('1', '0', '0', '粮油', 'images/1732037c0f2013ae4fb8462731488a5e.png', '2021-12-25 15:15:36', '2022-01-05 11:49:38');
+INSERT INTO `category` VALUES ('2', '0', '1', '米面', 'images/be83a1012ac41af9e4395632eda6222f.png', '2021-12-25 15:17:22', '2022-01-05 11:49:50');
+INSERT INTO `category` VALUES ('3', '0', '2', '零食', 'images/c4d30553be0b9943bf52706382b74642.png', '2021-12-25 15:17:44', '2022-01-05 11:49:58');
+INSERT INTO `category` VALUES ('4', '1', '3', '金龙鱼', null, '2021-12-25 15:28:59', '2021-12-25 15:47:52');
+INSERT INTO `category` VALUES ('5', '0', '4', '清洁', 'images/5f322aa49612d8741451c14f3d34a176.png', '2021-12-25 15:46:22', '2022-01-05 11:50:06');
+INSERT INTO `category` VALUES ('6', '0', '5', '生鲜', 'images/34236a0246ec378b184bffe13b301e7b.png', '2022-01-06 14:16:41', '2022-01-06 14:16:41');
+INSERT INTO `category` VALUES ('7', '0', '6', '水果', 'images/8d1f3ef8a99e768ba39e4a58d9aba5cf.png', '2022-01-06 14:16:57', '2022-01-06 14:16:57');
 
 -- ----------------------------
 -- Table structure for goods
@@ -282,6 +311,7 @@ CREATE TABLE `goods` (
   `goods_cost` decimal(8,2) DEFAULT NULL,
   `goods_sell_num` tinyint(4) DEFAULT '0',
   `goods_stock` tinyint(4) NOT NULL DEFAULT '0',
+  `goods_unit` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -292,11 +322,11 @@ CREATE TABLE `goods` (
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('1', '3', '盼盼小面包盼盼小面包盼盼小面包盼盼小面包盼盼小面包盼盼小面包盼盼小面包', '盼盼小面包', '[]', '', '', '0.00', '0.00', '0.00', '0', '0', '0', '2021-12-28 10:02:44', '2021-12-30 15:10:25', null);
-INSERT INTO `goods` VALUES ('6', '1', '金龙鱼调和油', '', '[]', '', '', '0.00', '0.00', '0.00', '0', '0', '1', '2021-12-28 11:45:11', '2021-12-30 15:00:18', null);
-INSERT INTO `goods` VALUES ('7', '3', '盼盼小面包', '', '[]', '0', '', '0.00', '0.00', '0.00', '0', '0', '0', '2021-12-28 11:48:44', '2021-12-29 17:14:04', null);
-INSERT INTO `goods` VALUES ('10', '3', '士力架', '士力架', '[\"\\u58eb\\u529b\\u67b6\"]', '2', '<p>士力架士力架士力架士力架士力架士力架</p>', '2.80', '3.00', '2.50', '56', '99', '1', '2021-12-29 11:32:47', '2021-12-29 16:53:28', null);
-INSERT INTO `goods` VALUES ('11', '3', '露露杏仁露', '露露', '[\"\\u9732\\u9732\",\"\\u674f\\u4ec1\\u9732\"]', '1', '<p>露露露露露露露露露露露露露露</p>', '55.00', '65.00', '45.00', '56', '99', '1', '2021-12-29 14:32:26', '2021-12-29 16:53:32', null);
+INSERT INTO `goods` VALUES ('1', '3', '盼盼小面包盼盼小面包盼盼小面包盼盼小面包盼盼小面包盼盼小面包盼盼小面包', '盼盼小面包', '零食,面包', '1,2,3', '', '1.00', '0.00', '0.00', '0', '10', '箱', '1', '2021-12-28 10:02:44', '2022-01-10 11:54:13', null);
+INSERT INTO `goods` VALUES ('6', '1', '金龙鱼调和油', '', '', '1,3', '', '1.50', '0.00', '0.00', '0', '15', '桶', '0', '2021-12-28 11:45:11', '2022-01-10 11:54:23', null);
+INSERT INTO `goods` VALUES ('7', '3', '盼盼小面包', '', '', '1,3', '', '2.00', '0.00', '0.00', '0', '20', '箱', '1', '2021-12-28 11:48:44', '2022-01-10 11:54:44', null);
+INSERT INTO `goods` VALUES ('10', '3', '士力架', '士力架', '', '2', '<p>士力架士力架士力架士力架士力架士力架</p>', '2.80', '3.00', '2.50', '56', '99', '盒', '1', '2021-12-29 11:32:47', '2022-01-10 11:54:32', null);
+INSERT INTO `goods` VALUES ('11', '3', '露露杏仁露', '露露', '', '2,3', '<p>露露露露露露露露露露露露露露</p>', '55.00', '65.00', '45.00', '56', '99', '箱', '1', '2021-12-29 14:32:26', '2022-01-10 11:54:39', null);
 
 -- ----------------------------
 -- Table structure for goods_spec

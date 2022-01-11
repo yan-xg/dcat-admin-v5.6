@@ -12,7 +12,7 @@ if (! function_exists('user_admin_config')) {
             $config['name'] = admin_setting('name');
             $config['url'] = admin_setting('url');
             $config['logo'] = admin_setting('logo');
-            $config['lang'] = admin_setting('locale',config('app.locale'));
+            $config['lang'] = admin_setting('lang',config('app.locale'));
         }
         if (is_array($key)) {
             admin_setting($key); //添加到数据库

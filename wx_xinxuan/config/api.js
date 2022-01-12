@@ -1,4 +1,4 @@
-const ApiRootUrl = 'http://xz.xingzan66.com/api/';
+const ApiRootUrl = 'https://xz.xingzan66.com/api/';
 
 module.exports = {
     // 首页

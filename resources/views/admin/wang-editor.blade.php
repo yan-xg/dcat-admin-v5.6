@@ -1,3 +1,8 @@
+<style>
+    .w-e-text-container{
+        height:600px!important;
+    }
+</style>
 <div class="{{$viewClass['form-group']}}">
 
     <label class="{{$viewClass['label']}} control-label">{{$label}}</label>

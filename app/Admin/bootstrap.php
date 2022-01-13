@@ -8,6 +8,7 @@ use Dcat\Admin\Grid\Filter;
 use Dcat\Admin\Layout\Navbar;
 use Dcat\Admin\Show;
 use Dcat\Admin\Repositories\Repository;
+use App\Admin\Extensions\Form\WangEditor;
 
 /**
  * Dcat-admin - admin builder based on Laravel.
@@ -47,3 +48,11 @@ Admin::navbar(function (Navbar $navbar) {
         $navbar->$method(App\Admin\Actions\AdminSetting::make()->render());
     }
 });
+
+// 注册前端组件别名
+Admin::asset()->alias('@wang-editor', [
+    // 为了方便演示效果，这里直接加载CDN链接，实际开发中可以下载到服务器加载
+    'js' => ['https://cdn.jsdelivr.net/npm/wangeditor@4.7.1/dist/wangEditor.min.js'],
+]);
+
+Form::extend('editor', WangEditor::class);

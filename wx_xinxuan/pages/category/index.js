@@ -135,9 +135,6 @@ Page({
     },
     onBottom: function() {
         let that = this;
-        console.log(that.data.allCount);
-        console.log(that.data.size);
-        console.log(that.data.currentPage);
         if (that.data.maxPage <= that.data.currentPage) {
             that.setData({
                 showNoMore: 0

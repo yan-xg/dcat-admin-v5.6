@@ -42,7 +42,9 @@ class CategoryController extends ApiController
 //        $page = input::get('page',1);
 //        $offset = ($page-1)*$size;
 
-        $goods = Goods::where($where)->orderBy('id','desc')->paginate($size);
+        $filed = ['id','category_id','goods_name','goods_shorttitle','goods_price','goods_stock','goods_property'];
+
+        $goods = Goods::where($where)->select($filed)->orderBy('id','desc')->paginate($size);
         foreach ($goods as $gk=>$gv){
             foreach ($gv->goodsPic as $pk=>$pv){
                 if($pk == 0){

@@ -37,8 +37,9 @@ class GoodsController extends ApiController
 
         $sort  = $sort=='default' ? 'id' : $sort;
         $order = $sort=='goods_stock' ? $sales : $order;
+        $filed = ['id','category_id','goods_name','goods_shorttitle','goods_price','goods_stock','goods_property'];
 
-        $goods = Goods::where($where)->orderBy($sort, $order)->get();
+        $goods = Goods::where($where)->select($filed)->orderBy($sort, $order)->get();
         foreach ($goods as $gk=>$gv){
             foreach ($gv->goodsPic as $pk=>$pv){
                 if($pk == 0){

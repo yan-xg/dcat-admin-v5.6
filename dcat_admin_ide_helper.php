@@ -12,6 +12,7 @@ namespace Dcat\Admin {
 
     /**
      * @property Grid\Column|Collection id
+     * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection created_at
      * @property Grid\Column|Collection updated_at
@@ -21,7 +22,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection detail
      * @property Grid\Column|Collection is_enabled
      * @property Grid\Column|Collection parent_id
-     * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection uri
      * @property Grid\Column|Collection extension
      * @property Grid\Column|Collection permission_id
@@ -47,6 +47,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection goods_cost
      * @property Grid\Column|Collection goods_sell_num
      * @property Grid\Column|Collection goods_stock
+     * @property Grid\Column|Collection goods_unit
      * @property Grid\Column|Collection status
      * @property Grid\Column|Collection deleted_at
      * @property Grid\Column|Collection goods_id
@@ -75,6 +76,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection is_default
      *
      * @method Grid\Column|Collection id(string $label = null)
+     * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection created_at(string $label = null)
      * @method Grid\Column|Collection updated_at(string $label = null)
@@ -84,7 +86,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection detail(string $label = null)
      * @method Grid\Column|Collection is_enabled(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
-     * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection uri(string $label = null)
      * @method Grid\Column|Collection extension(string $label = null)
      * @method Grid\Column|Collection permission_id(string $label = null)
@@ -110,6 +111,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection goods_cost(string $label = null)
      * @method Grid\Column|Collection goods_sell_num(string $label = null)
      * @method Grid\Column|Collection goods_stock(string $label = null)
+     * @method Grid\Column|Collection goods_unit(string $label = null)
      * @method Grid\Column|Collection status(string $label = null)
      * @method Grid\Column|Collection deleted_at(string $label = null)
      * @method Grid\Column|Collection goods_id(string $label = null)
@@ -143,6 +145,7 @@ namespace Dcat\Admin {
 
     /**
      * @property Show\Field|Collection id
+     * @property Show\Field|Collection icon
      * @property Show\Field|Collection order
      * @property Show\Field|Collection created_at
      * @property Show\Field|Collection updated_at
@@ -152,7 +155,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection detail
      * @property Show\Field|Collection is_enabled
      * @property Show\Field|Collection parent_id
-     * @property Show\Field|Collection icon
      * @property Show\Field|Collection uri
      * @property Show\Field|Collection extension
      * @property Show\Field|Collection permission_id
@@ -178,6 +180,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection goods_cost
      * @property Show\Field|Collection goods_sell_num
      * @property Show\Field|Collection goods_stock
+     * @property Show\Field|Collection goods_unit
      * @property Show\Field|Collection status
      * @property Show\Field|Collection deleted_at
      * @property Show\Field|Collection goods_id
@@ -206,6 +209,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection is_default
      *
      * @method Show\Field|Collection id(string $label = null)
+     * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection created_at(string $label = null)
      * @method Show\Field|Collection updated_at(string $label = null)
@@ -215,7 +219,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection detail(string $label = null)
      * @method Show\Field|Collection is_enabled(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
-     * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection uri(string $label = null)
      * @method Show\Field|Collection extension(string $label = null)
      * @method Show\Field|Collection permission_id(string $label = null)
@@ -241,6 +244,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection goods_cost(string $label = null)
      * @method Show\Field|Collection goods_sell_num(string $label = null)
      * @method Show\Field|Collection goods_stock(string $label = null)
+     * @method Show\Field|Collection goods_unit(string $label = null)
      * @method Show\Field|Collection status(string $label = null)
      * @method Show\Field|Collection deleted_at(string $label = null)
      * @method Show\Field|Collection goods_id(string $label = null)

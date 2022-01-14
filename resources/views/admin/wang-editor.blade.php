@@ -3,6 +3,7 @@
         height:600px!important;
     }
 </style>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="{{$viewClass['form-group']}}">
 
     <label class="{{$viewClass['label']}} control-label">{{$label}}</label>
@@ -28,7 +29,13 @@
     // id 变量是 Dcat.init() 自动生成的，是一个唯一的随机字符串
     var editor = new E('#' + id);
     editor.config.zIndex = 0
-    editor.config.uploadImgShowBase64 = true
+    editor.config.uploadImgShowBase64 = false
+    editor.config.uploadImgServer  = "/admin/goods/wangUploadImage"
+    editor.config.uploadFileName = "image";
+    editor.config.uploadImgHeaders = {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
     editor.config.onchange = function (html) {
         $this.parents('.form-field').find('input[type="hidden"]').val(html);
     }

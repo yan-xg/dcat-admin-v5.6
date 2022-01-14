@@ -16,6 +16,7 @@ Route::group([
 
     //自定义图片上传接口
     $router->any('goods/images', 'GoodsImageController@handle');
+    $router->any('goods/wangUploadImage', 'GoodsImageController@wangUploadImage');
 
     //商品
     $router->resource('category', 'CategoryController');

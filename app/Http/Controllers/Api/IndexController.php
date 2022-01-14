@@ -12,7 +12,8 @@ class IndexController extends ApiController
         $filed = ['id','category_id','goods_name','goods_shorttitle','goods_price','goods_stock','goods_property'];
         $where['status'] = 1;
         // 首页banner展示推荐的4个商品
-        $banner = Goods::where($where)->whereRaw('FIND_IN_SET(1,`goods_property`)')->select($filed)->limit(4)->orderBy('id','desc')->get();
+//        ->whereRaw('FIND_IN_SET(3,`goods_property`)')
+        $banner = Goods::where($where)->select($filed)->limit(4)->orderBy('id','desc')->get();
         foreach ($banner as $bk=>$bv){
             foreach ($bv->goodsPic as $pk=>$pv){
                 if($pk == 0){
@@ -27,18 +28,21 @@ class IndexController extends ApiController
             $where['category_id'] = $cv->id;
 
             //每个分类模块下展示新品的6个
-            $goods = Goods::where($where)->whereRaw('FIND_IN_SET(2,`goods_property`)')->select($filed)->limit(6)->get();
-            foreach ($goods as $gk=>$gv){
-                if($gv->goodsPic){
-                    foreach ($gv->goodsPic as $pk=>$pv){
-                        if($pk == 0 && $pv!=''){
-                            $goods[$gk]['pic'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
+//            ->whereRaw('FIND_IN_SET(1,`goods_property`)')
+            $goods = Goods::where($where)->select($filed)->limit(6)->get();
+            if(count($goods) > 0){
+                foreach ($goods as $gk=>$gv){
+                    if($gv->goodsPic){
+                        foreach ($gv->goodsPic as $pk=>$pv){
+                            if($pk == 0 && $pv!=''){
+                                $goods[$gk]['pic'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
+                            }
                         }
                     }
                 }
-            }
 
-            $category[$ck]['goodsList'] = $goods;
+                $category[$ck]['goodsList'] = $goods;
+            }
         }
         $data['categoryList'] = $category;
         $data['banner'] = $banner;

@@ -30,7 +30,7 @@ class SearchController extends ApiController
         $where['status'] = 1;
         $where[] = ['goods_name', 'like', '%'.$keyword.'%'];
 
-        $goods = Goods::where($where)->select('goods_name')->get();
+        $goods = Goods::where($where)->select('goods_name')->limit(5)->get();
         return $this->success($goods);
     }
 }

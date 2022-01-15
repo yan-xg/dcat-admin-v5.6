@@ -49,7 +49,7 @@
             <view class='sales'>已售{{goods.goods_sell_num}}份</view>
         </view>
     </view>
-    <view class='section-nav' bindtap="switchAttrPop">
+    <view class='section-nav' wx:if="{{ specificationList.length > 0}}" bindtap="switchAttrPop">
         <view class="t">{{checkedSpecText}}</view>
         <view class="arrow"></view>
     </view>

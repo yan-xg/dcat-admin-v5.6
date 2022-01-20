@@ -1,4 +1,5 @@
-const ApiRootUrl = 'https://xz.xingzan66.com/api/';
+// const ApiRootUrl = 'https://xz.xingzan66.com/api/';
+const ApiRootUrl = 'http://dcat-admin-v56.cc/api/';
 
 module.exports = {
     // 首页
@@ -10,23 +11,20 @@ module.exports = {
 
     // 商品
     GoodsCount: ApiRootUrl + 'goods/count', //统计商品总数
-    GoodsList: ApiRootUrl + 'goods/searchlist', //获得商品列表
+    GoodsList: ApiRootUrl + 'goods/searchlist', //商品搜索列表
     GoodsDetail: ApiRootUrl + 'goods/detail', //获得商品的详情
-    // GoodsShare: ApiRootUrl + 'goods/goodsShare', //获得商品的详情
+    // GoodsShare: ApiRootUrl + 'goods/goodsShare', //分享商品
     // SaveUserId: ApiRootUrl + 'goods/saveUserId',
 
     // 搜索
-    SearchHelper: ApiRootUrl + 'search/helper', //搜索
+    SearchHelper: ApiRootUrl + 'search/helper', //搜索帮助
     // SearchIndex: ApiRootUrl + 'search/index', //搜索页面默认数据
     // SearchClearHistory: ApiRootUrl + 'search/clearHistory', //历史记录
 
-
-
-
-/*
     // 登录
     AuthLoginByWeixin: ApiRootUrl + 'auth/loginByWeixin', //微信登录
-    
+
+    /*
     // 购物车
     CartAdd: ApiRootUrl + 'cart/add', // 添加商品到购物车
     CartList: ApiRootUrl + 'cart/index', //获取购物车的数据

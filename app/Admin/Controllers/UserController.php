@@ -7,16 +7,17 @@ use App\Models\UserAddress;
 use App\Admin\Renderable\AmUserAddress;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Repositories\EloquentRepository;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 
 class UserController extends AdminController
 {
-    public $sex;
+    public $gender;
     public $status;
     public function __construct()
     {
-        $this->sex = config('dictionary.user.sex');
+        $this->gender = config('dictionary.user.gender');
         $this->status = config('dictionary.user.status');
     }
 
@@ -29,10 +30,9 @@ class UserController extends AdminController
     {
         return Grid::make(new User(), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('name');
-            $grid->column('email');
-            $grid->column('headimg')->image('','50','50');
-            $grid->column('sex')->select($this->sex);
+            $grid->column('nickname');
+            $grid->column('avatar_url')->image('','50','50');
+            $grid->column('gender')->select($this->gender);
             $grid->column('ipone');
             $grid->column('address','地址')->display('我的地址')->modal('我的地址', function (Grid\Displayers\Modal $modal){
                 return AmUserAddress::make()->payload(['uid'=>$this->id]);
@@ -44,12 +44,12 @@ class UserController extends AdminController
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-                $filter->like('name');
+                $filter->like('nickname');
 
             });
 
             $grid->selector(function (Grid\Tools\Selector $selector) {
-                $selector->selectOne('sex', '性别', $this->sex);
+                $selector->selectOne('gender', '性别', $this->gender);
                 $selector->selectOne('status', '状态', $this->status);
             });
 
@@ -72,14 +72,13 @@ class UserController extends AdminController
     {
         return Show::make($id, new User(), function (Show $show) {
             $show->field('id');
-            $show->field('name');
+            $show->field('nickname');
             $show->field('password');
             $show->field('email');
-            $show->field('remember_token');
-            $show->field('headimg');
-            $show->field('sex');
+            $show->field('avatar_url');
+            $show->field('gender');
             $show->field('ipone');
-            $show->field('appid');
+            $show->field('openid');
             $show->field('token');
             $show->field('status');
             $show->field('created_at');
@@ -96,15 +95,15 @@ class UserController extends AdminController
     {
         return Form::make(new User(), function (Form $form) {
             $form->display('id');
-            $form->text('name')->required();
+            $form->text('nickname')->required();
             $form->password('password');
             $form->email('email');
-            $form->image('headimg')
+            $form->image('avatar_url')
                 ->accept('jpg,png,gif,jpeg', 'image/*')
                 ->autoUpload()
                 ->maxSize(1024)
                 ->help('只能上传图片,且大小不能超过1MB');
-            $form->radio('sex')->options($this->sex)->default(0);
+            $form->radio('gender')->options($this->gender)->default(0);
             $form->mobile('ipone');
             $form->radio('status')->options($this->status)->default(1);
 

@@ -78,7 +78,7 @@
                                 <view class="goods-intro">{{iitem.goods_keywords}}</view>
                                 <view class='price-container'>
                                     <view class='l'>
-                                        <view class='stock'>已售：{{iitem.goods_stock}}</view>
+                                        <view class='stock'>已售：{{iitem.goods_sell_num}}</view>
                                         <view class='h'>￥{{iitem.goods_price}}</view>
                                     </view>
                                 </view>

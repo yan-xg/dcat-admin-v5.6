@@ -32,3 +32,6 @@ Route::post('category/currentlist','Api\CategoryController@currentlist');
 //搜索
 Route::get('search/index','Api\SearchController@index');// 未使用
 Route::post('search/helper','Api\SearchController@helper');
+
+//登录
+Route::post('auth/loginByWeixin','Api\WeixinLoginController@weixinLogin');

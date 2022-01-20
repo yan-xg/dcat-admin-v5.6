@@ -13,6 +13,8 @@ Page({
     },
     onShow: function () {
         let userInfo = wx.getStorageSync('userInfo');
+        console.log(userInfo)
+        return false;
         if (userInfo != '') {
             wx.navigateBack();
         };
@@ -57,13 +59,16 @@ Page({
                     rawData: res.rawData,
                     signature: res.signature
                 };
-                console.log(loginParams);
                 that.postLogin(loginParams);
             },
             // 失败回调
             fail: () => {
                 // 弹出错误
-                App.showError('已拒绝小程序获取信息');
+                wx.showToast({
+                    title: '已拒绝小程序获取信息',
+                    icon: 'none',
+                    duration: 2000//持续的时间
+                  })
             }
         });
     },
@@ -71,20 +76,12 @@ Page({
         util.request(api.AuthLoginByWeixin, {
             info: info
         }, 'POST').then(function (res) {
-            console.log(res);
-            if (res.errno === 0) {
-                wx.setStorageSync('userInfo', res.data.userInfo);
+            if (res.code == 200) {
+                wx.setStorageSync('userInfo', res.data);
                 wx.setStorageSync('token', res.data.token);
-                app.globalData.userInfo = res.data.userInfo;
+                app.globalData.userInfo = res.data;
                 app.globalData.token = res.data.token;
-                let is_new = res.data.is_new; //服务器返回的数据；
-                console.log(is_new);
-                if (is_new == 0) {
-                    util.showErrorToast('您已经是老用户啦！');
-                    wx.navigateBack();
-                } else if (is_new == 1) {
-                    wx.navigateBack();
-                }
+                wx.navigateBack();
             }
         });
     },

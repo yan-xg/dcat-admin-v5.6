@@ -35,6 +35,7 @@ Page({
     getSearchKeyword() {
         let that = this;
         util.request(api.SearchIndex).then(function (res) {
+            console.log(res)
             if (res.code == 200) {
                 that.setData({
                     // historyKeyword: res.data.historyKeywordList,
@@ -86,7 +87,7 @@ Page({
 
     getGoodsList: function () {
         let that = this;
-        console.log(that.data);
+        // console.log(that.data);
         util.request(api.GoodsList, { keyword: that.data.keyword, sort: that.data.currentSortType, order: that.data.currentSortOrder, sales: that.data.salesSortOrder},'POST').then(function (res) {
             if (res.code == 200) {
                 that.setData({

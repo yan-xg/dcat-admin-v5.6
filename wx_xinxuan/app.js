@@ -55,6 +55,6 @@ App({
             avatar: 'http://lucky-icon.meiweiyuxian.com/hio/default_avatar_big.png'
         },
         token: '',
-    }
+    },
 
 })

@@ -61,16 +61,19 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection is_master
      * @property Grid\Column|Collection pic_order
      * @property Grid\Column|Collection pic_status
-     * @property Grid\Column|Collection headimg
-     * @property Grid\Column|Collection sex
+     * @property Grid\Column|Collection nickname
+     * @property Grid\Column|Collection avatar_url
+     * @property Grid\Column|Collection gender
      * @property Grid\Column|Collection ipone
-     * @property Grid\Column|Collection appid
+     * @property Grid\Column|Collection language
+     * @property Grid\Column|Collection country
+     * @property Grid\Column|Collection province
+     * @property Grid\Column|Collection city
+     * @property Grid\Column|Collection openid
      * @property Grid\Column|Collection uid
      * @property Grid\Column|Collection shipping_user
      * @property Grid\Column|Collection shipping_ipone
      * @property Grid\Column|Collection zip
-     * @property Grid\Column|Collection province
-     * @property Grid\Column|Collection city
      * @property Grid\Column|Collection district
      * @property Grid\Column|Collection address
      * @property Grid\Column|Collection is_default
@@ -125,16 +128,19 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection is_master(string $label = null)
      * @method Grid\Column|Collection pic_order(string $label = null)
      * @method Grid\Column|Collection pic_status(string $label = null)
-     * @method Grid\Column|Collection headimg(string $label = null)
-     * @method Grid\Column|Collection sex(string $label = null)
+     * @method Grid\Column|Collection nickname(string $label = null)
+     * @method Grid\Column|Collection avatar_url(string $label = null)
+     * @method Grid\Column|Collection gender(string $label = null)
      * @method Grid\Column|Collection ipone(string $label = null)
-     * @method Grid\Column|Collection appid(string $label = null)
+     * @method Grid\Column|Collection language(string $label = null)
+     * @method Grid\Column|Collection country(string $label = null)
+     * @method Grid\Column|Collection province(string $label = null)
+     * @method Grid\Column|Collection city(string $label = null)
+     * @method Grid\Column|Collection openid(string $label = null)
      * @method Grid\Column|Collection uid(string $label = null)
      * @method Grid\Column|Collection shipping_user(string $label = null)
      * @method Grid\Column|Collection shipping_ipone(string $label = null)
      * @method Grid\Column|Collection zip(string $label = null)
-     * @method Grid\Column|Collection province(string $label = null)
-     * @method Grid\Column|Collection city(string $label = null)
      * @method Grid\Column|Collection district(string $label = null)
      * @method Grid\Column|Collection address(string $label = null)
      * @method Grid\Column|Collection is_default(string $label = null)
@@ -194,16 +200,19 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection is_master
      * @property Show\Field|Collection pic_order
      * @property Show\Field|Collection pic_status
-     * @property Show\Field|Collection headimg
-     * @property Show\Field|Collection sex
+     * @property Show\Field|Collection nickname
+     * @property Show\Field|Collection avatar_url
+     * @property Show\Field|Collection gender
      * @property Show\Field|Collection ipone
-     * @property Show\Field|Collection appid
+     * @property Show\Field|Collection language
+     * @property Show\Field|Collection country
+     * @property Show\Field|Collection province
+     * @property Show\Field|Collection city
+     * @property Show\Field|Collection openid
      * @property Show\Field|Collection uid
      * @property Show\Field|Collection shipping_user
      * @property Show\Field|Collection shipping_ipone
      * @property Show\Field|Collection zip
-     * @property Show\Field|Collection province
-     * @property Show\Field|Collection city
      * @property Show\Field|Collection district
      * @property Show\Field|Collection address
      * @property Show\Field|Collection is_default
@@ -258,16 +267,19 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection is_master(string $label = null)
      * @method Show\Field|Collection pic_order(string $label = null)
      * @method Show\Field|Collection pic_status(string $label = null)
-     * @method Show\Field|Collection headimg(string $label = null)
-     * @method Show\Field|Collection sex(string $label = null)
+     * @method Show\Field|Collection nickname(string $label = null)
+     * @method Show\Field|Collection avatar_url(string $label = null)
+     * @method Show\Field|Collection gender(string $label = null)
      * @method Show\Field|Collection ipone(string $label = null)
-     * @method Show\Field|Collection appid(string $label = null)
+     * @method Show\Field|Collection language(string $label = null)
+     * @method Show\Field|Collection country(string $label = null)
+     * @method Show\Field|Collection province(string $label = null)
+     * @method Show\Field|Collection city(string $label = null)
+     * @method Show\Field|Collection openid(string $label = null)
      * @method Show\Field|Collection uid(string $label = null)
      * @method Show\Field|Collection shipping_user(string $label = null)
      * @method Show\Field|Collection shipping_ipone(string $label = null)
      * @method Show\Field|Collection zip(string $label = null)
-     * @method Show\Field|Collection province(string $label = null)
-     * @method Show\Field|Collection city(string $label = null)
      * @method Show\Field|Collection district(string $label = null)
      * @method Show\Field|Collection address(string $label = null)
      * @method Show\Field|Collection is_default(string $label = null)

@@ -17,6 +17,8 @@ Page({
     getAddresses() {
         let that = this;
         util.request(api.GetAddresses).then(function(res) {
+            console.log(res)
+            return false;
             if (res.errno === 0) {
                 that.setData({
                     addresses: res.data

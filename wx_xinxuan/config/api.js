@@ -24,6 +24,12 @@ module.exports = {
     // 登录
     AuthLoginByWeixin: ApiRootUrl + 'auth/loginByWeixin', //微信登录
 
+    // 我的
+    OrderCountInfo: ApiRootUrl + 'order/orderCount', // 我的页面获取订单数状态
+
+    // 收货地址
+    GetAddresses: ApiRootUrl + 'address/getAddresses',//获取收货地址
+
     /*
     // 购物车
     CartAdd: ApiRootUrl + 'cart/add', // 添加商品到购物车
@@ -38,7 +44,7 @@ module.exports = {
     AddressDetail: ApiRootUrl + 'address/addressDetail', //收货地址详情
     DeleteAddress: ApiRootUrl + 'address/deleteAddress', //保存收货地址
     SaveAddress: ApiRootUrl + 'address/saveAddress', //保存收货地址
-    GetAddresses: ApiRootUrl + 'address/getAddresses',
+    
     RegionList: ApiRootUrl + 'region/list', //获取区域列表
     PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
     OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单
@@ -48,7 +54,7 @@ module.exports = {
     OrderCancel: ApiRootUrl + 'order/cancel', //取消订单
     OrderConfirm: ApiRootUrl + 'order/confirm', //物流详情
     OrderCount: ApiRootUrl + 'order/count', // 获取订单数
-    OrderCountInfo: ApiRootUrl + 'order/orderCount', // 我的页面获取订单数状态
+    
     OrderExpressInfo: ApiRootUrl + 'order/express', //物流信息
     OrderGoods: ApiRootUrl + 'order/orderGoods', // 获取checkout页面的商品列表
     // 足迹

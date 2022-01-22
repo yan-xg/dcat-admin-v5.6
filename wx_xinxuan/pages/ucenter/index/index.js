@@ -74,8 +74,8 @@ Page({
         this.setData({
             userInfo: userInfo,
         });
-        this.getOrderInfo();
-        wx.removeStorageSync('categoryId');
+        // this.getOrderInfo();//获取我的订单
+        // wx.removeStorageSync('categoryId');
     },
 
     onPullDownRefresh: function() {

@@ -11,6 +11,7 @@ use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Form\NestedForm;
 use App\Admin\Actions\Post\Restore;
 use App\Admin\Actions\Post\BatchRestore;
+use App\Admin\Renderable\GoodsPic;
 
 class GoodsController extends AdminController
 {
@@ -25,7 +26,9 @@ class GoodsController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('category.title','类别')->label('default');
             $grid->column('goods_name')->limit(15);
-            $grid->column('goods_shorttitle');
+            $grid->column('pic_url','图片')->display('我的图片')->modal('我的图片', function (Grid\Displayers\Modal $modal){
+                return GoodsPic::make()->payload(['goods_id'=>$this->id]);
+            });
             $grid->column('goods_property')->checkbox(config('dictionary.goods.property'));
             $grid->column('goods_price');
             $grid->column('goods_original_price');

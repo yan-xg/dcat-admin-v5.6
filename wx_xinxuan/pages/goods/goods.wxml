@@ -49,7 +49,8 @@
             <view class='sales'>已售{{goods.goods_sell_num}}份</view>
         </view>
     </view>
-    <view class='section-nav' wx:if="{{ specificationList.length > 0}}" bindtap="switchAttrPop">
+    <!-- wx:if="{{ specificationList.length > 0}}" -->
+    <view class='section-nav' bindtap="switchAttrPop">
         <view class="t">{{checkedSpecText}}</view>
         <view class="arrow"></view>
     </view>
@@ -69,10 +70,32 @@
             <view class="close" catchtap="closeAttr">
                 <image class="icon" src="/images/icon/icon-close.png"></image>
             </view>
-            <view class="product-code">产品参数</view>
-            <view class="goods_spec" wx:for="{{specificationList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
-                <view class="l">{{item.goods_key}}</view>
-                <view class="r">{{item.goods_value}}</view>
+            <view class="img-info">
+                <view class="img-wrap">
+                    <image class="img" src="{{gallery[0].pic_url}}"></image>
+                </view>
+                <view class="info">
+                    <view class='price-range'>
+                        <view class='retail-price'>
+                            <view class='p-title'>零售价：</view>
+                            <view class='g-price'>{{goods.goods_price}}元</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="spec-con">
+                <view class="number-item">
+                    <view class="name">库存</view>
+                    <view class='stock-num'>{{goods.goods_stock}}</view>
+                </view>
+                <view class="number-item">
+                    <view class="name">数量 ({{goods.goods_unit}})</view>
+                    <view class="selnum">
+                        <button class="cut" bindtap="cutNumber">-</button>
+                        <input value="{{number}}" class="number" type="number" cursor-spacing="100" bindblur="inputNumber" />
+                        <button class="add" bindtap="addNumber" disabled='{{disabled}}'>+</button>
+                    </view>
+                </view>
             </view>
         </view>
     </view>

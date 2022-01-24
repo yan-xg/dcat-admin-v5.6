@@ -13,8 +13,6 @@ Page({
     },
     onShow: function () {
         let userInfo = wx.getStorageSync('userInfo');
-        console.log(userInfo)
-        return false;
         if (userInfo != '') {
             wx.navigateBack();
         };
@@ -79,8 +77,10 @@ Page({
             if (res.code == 200) {
                 wx.setStorageSync('userInfo', res.data);
                 wx.setStorageSync('token', res.data.token);
+                wx.setStorageSync('uid', res.data.uid);
                 app.globalData.userInfo = res.data;
                 app.globalData.token = res.data.token;
+                app.globalData.uid = res.data.uid;
                 wx.navigateBack();
             }
         });

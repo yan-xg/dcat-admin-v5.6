@@ -37,7 +37,9 @@ Route::post('search/helper','Api\SearchController@helper');
 Route::post('auth/loginByWeixin','Api\WeixinLoginController@weixinLogin');
 
 // 收货地址
-Route::get('address/getAddresses','Api\AddressController@getAddresses');
+Route::post('address/getAddresses','Api\AddressController@getAddresses');
+Route::post('address/saveAddress','Api\AddressController@saveAddress');
+Route::get('region/list','Api\RegionController@getRegion');
 
 //我的订单（后台未搭建）
 Route::post('order/orderCount','Api\OrderCountController@orderCount');

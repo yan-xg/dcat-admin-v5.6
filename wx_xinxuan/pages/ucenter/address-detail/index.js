@@ -299,7 +299,7 @@ Page({
         util.request(api.RegionList, {
             parentId: regionId
         }).then(function(res) {
-            if (res.errno === 0) {
+            if (res.code == 200) {
                 that.setData({
                     regionList: res.data.map(item => {
 
@@ -345,7 +345,9 @@ Page({
             address: address.address,
             is_default: address.is_default,
         }, 'POST').then(function(res) {
-            if (res.errno === 0) {
+            console.log(res)
+            return false;
+            if (res.code == 200) {
                 wx.navigateBack()
             }
         });

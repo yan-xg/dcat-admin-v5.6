@@ -49,9 +49,9 @@ class WeixinLoginController extends ApiController
         $datas['openid'] = $access_token['openid'];
 
         if ($errCode == 0) {
-            $count = User::where('openid', $datas['openid'])->count();
-            if ($count == 0) {
-                User::insert([
+            $uinfo = User::where('openid', $datas['openid'])->first();
+            if (!$uinfo) {
+                $arr = [
                     'nickname' => $datas['nickName'],
                     'openid' => $datas['openid'],
                     'token' => $datas['token'],
@@ -61,7 +61,9 @@ class WeixinLoginController extends ApiController
                     'province' => $datas['province'],
                     'city' => $datas['city'],
                     'language' => $datas['language'],
-                ]);
+                ];
+                $datas['uid'] = base64_encode(User::insertGetId($arr).'_'.$datas['openid']);
+
             } else {
                 User::where('openid', $datas['openid'])->update(
                     [
@@ -75,6 +77,7 @@ class WeixinLoginController extends ApiController
                         'language' => $datas['language'],
                     ]
                 );
+                $datas['uid'] = base64_encode($uinfo['id'].'_'.$uinfo['openid']);
             }
             return $this->success($datas);
         } else {

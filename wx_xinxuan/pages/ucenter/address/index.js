@@ -16,10 +16,9 @@ Page({
     },
     getAddresses() {
         let that = this;
-        util.request(api.GetAddresses).then(function(res) {
-            console.log(res)
-            return false;
-            if (res.errno === 0) {
+        let uid = wx.getStorageSync('uid');
+        util.request(api.GetAddresses,{ uid: uid }, 'POST').then(function(res) {
+            if (res.code == 200) {
                 that.setData({
                     addresses: res.data
                 })

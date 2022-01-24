@@ -29,6 +29,9 @@ module.exports = {
 
     // 收货地址
     GetAddresses: ApiRootUrl + 'address/getAddresses',//获取收货地址
+    SaveAddress: ApiRootUrl + 'address/saveAddress', //保存收货地址
+    RegionList: ApiRootUrl + 'region/list', //获取区域列表
+    
 
     /*
     // 购物车
@@ -43,9 +46,9 @@ module.exports = {
     // 收货地址
     AddressDetail: ApiRootUrl + 'address/addressDetail', //收货地址详情
     DeleteAddress: ApiRootUrl + 'address/deleteAddress', //保存收货地址
-    SaveAddress: ApiRootUrl + 'address/saveAddress', //保存收货地址
     
-    RegionList: ApiRootUrl + 'region/list', //获取区域列表
+    
+    
     PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
     OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单
     OrderList: ApiRootUrl + 'order/list', //订单列表

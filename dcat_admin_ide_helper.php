@@ -61,6 +61,10 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection is_master
      * @property Grid\Column|Collection pic_order
      * @property Grid\Column|Collection pic_status
+     * @property Grid\Column|Collection agency_id
+     * @property Grid\Column|Collection area
+     * @property Grid\Column|Collection area_code
+     * @property Grid\Column|Collection far_area
      * @property Grid\Column|Collection nickname
      * @property Grid\Column|Collection avatar_url
      * @property Grid\Column|Collection gender
@@ -71,10 +75,11 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection city
      * @property Grid\Column|Collection openid
      * @property Grid\Column|Collection uid
-     * @property Grid\Column|Collection shipping_user
-     * @property Grid\Column|Collection shipping_ipone
+     * @property Grid\Column|Collection mobile
      * @property Grid\Column|Collection zip
-     * @property Grid\Column|Collection district
+     * @property Grid\Column|Collection province_id
+     * @property Grid\Column|Collection city_id
+     * @property Grid\Column|Collection district_id
      * @property Grid\Column|Collection address
      * @property Grid\Column|Collection is_default
      *
@@ -128,6 +133,10 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection is_master(string $label = null)
      * @method Grid\Column|Collection pic_order(string $label = null)
      * @method Grid\Column|Collection pic_status(string $label = null)
+     * @method Grid\Column|Collection agency_id(string $label = null)
+     * @method Grid\Column|Collection area(string $label = null)
+     * @method Grid\Column|Collection area_code(string $label = null)
+     * @method Grid\Column|Collection far_area(string $label = null)
      * @method Grid\Column|Collection nickname(string $label = null)
      * @method Grid\Column|Collection avatar_url(string $label = null)
      * @method Grid\Column|Collection gender(string $label = null)
@@ -138,10 +147,11 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection city(string $label = null)
      * @method Grid\Column|Collection openid(string $label = null)
      * @method Grid\Column|Collection uid(string $label = null)
-     * @method Grid\Column|Collection shipping_user(string $label = null)
-     * @method Grid\Column|Collection shipping_ipone(string $label = null)
+     * @method Grid\Column|Collection mobile(string $label = null)
      * @method Grid\Column|Collection zip(string $label = null)
-     * @method Grid\Column|Collection district(string $label = null)
+     * @method Grid\Column|Collection province_id(string $label = null)
+     * @method Grid\Column|Collection city_id(string $label = null)
+     * @method Grid\Column|Collection district_id(string $label = null)
      * @method Grid\Column|Collection address(string $label = null)
      * @method Grid\Column|Collection is_default(string $label = null)
      */
@@ -200,6 +210,10 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection is_master
      * @property Show\Field|Collection pic_order
      * @property Show\Field|Collection pic_status
+     * @property Show\Field|Collection agency_id
+     * @property Show\Field|Collection area
+     * @property Show\Field|Collection area_code
+     * @property Show\Field|Collection far_area
      * @property Show\Field|Collection nickname
      * @property Show\Field|Collection avatar_url
      * @property Show\Field|Collection gender
@@ -210,10 +224,11 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection city
      * @property Show\Field|Collection openid
      * @property Show\Field|Collection uid
-     * @property Show\Field|Collection shipping_user
-     * @property Show\Field|Collection shipping_ipone
+     * @property Show\Field|Collection mobile
      * @property Show\Field|Collection zip
-     * @property Show\Field|Collection district
+     * @property Show\Field|Collection province_id
+     * @property Show\Field|Collection city_id
+     * @property Show\Field|Collection district_id
      * @property Show\Field|Collection address
      * @property Show\Field|Collection is_default
      *
@@ -267,6 +282,10 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection is_master(string $label = null)
      * @method Show\Field|Collection pic_order(string $label = null)
      * @method Show\Field|Collection pic_status(string $label = null)
+     * @method Show\Field|Collection agency_id(string $label = null)
+     * @method Show\Field|Collection area(string $label = null)
+     * @method Show\Field|Collection area_code(string $label = null)
+     * @method Show\Field|Collection far_area(string $label = null)
      * @method Show\Field|Collection nickname(string $label = null)
      * @method Show\Field|Collection avatar_url(string $label = null)
      * @method Show\Field|Collection gender(string $label = null)
@@ -277,10 +296,11 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection city(string $label = null)
      * @method Show\Field|Collection openid(string $label = null)
      * @method Show\Field|Collection uid(string $label = null)
-     * @method Show\Field|Collection shipping_user(string $label = null)
-     * @method Show\Field|Collection shipping_ipone(string $label = null)
+     * @method Show\Field|Collection mobile(string $label = null)
      * @method Show\Field|Collection zip(string $label = null)
-     * @method Show\Field|Collection district(string $label = null)
+     * @method Show\Field|Collection province_id(string $label = null)
+     * @method Show\Field|Collection city_id(string $label = null)
+     * @method Show\Field|Collection district_id(string $label = null)
      * @method Show\Field|Collection address(string $label = null)
      * @method Show\Field|Collection is_default(string $label = null)
      */

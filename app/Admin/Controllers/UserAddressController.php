@@ -17,18 +17,23 @@ class UserAddressController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new UserAddress('user'), function (Grid $grid) {
+        return Grid::make(new UserAddress(['user','province','city','district']), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('user.name','所属用户')->label('primary');
-            $grid->column('shipping_user');
-            $grid->column('shipping_ipone');
-            $grid->column('province');
-            $grid->column('city');
-            $grid->column('district');
+            $grid->column('user.nickname','所属用户')->label('primary');
+            $grid->column('name');
+            $grid->column('mobile');
+            $grid->column('province.name','省份');
+            $grid->column('city.name','城市');
+            $grid->column('district.name','区县');
             $grid->column('address')->limit(20);
             $grid->column('is_default')->switch();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
+
+            $grid->filter(function (Grid\Filter $filter) {
+                $filter->scope('trashed', '回收站')->onlyTrashed();
+
+            });
 
             $grid->disableEditButton();     //禁用编辑按钮
             $grid->disableViewButton();     //禁用查看按钮
@@ -50,12 +55,12 @@ class UserAddressController extends AdminController
         return Show::make($id, new UserAddress(), function (Show $show) {
             $show->field('id');
             $show->field('uid');
-            $show->field('shipping_user');
-            $show->field('shipping_ipone');
+            $show->field('name');
+            $show->field('mobile');
             $show->field('zip');
-            $show->field('province');
-            $show->field('city');
-            $show->field('district');
+            $show->field('province_id');
+            $show->field('city_id');
+            $show->field('district_id');
             $show->field('address');
             $show->field('is_default');
             $show->field('created_at');
@@ -73,12 +78,12 @@ class UserAddressController extends AdminController
         return Form::make(new UserAddress(), function (Form $form) {
             $form->display('id');
             $form->text('uid');
-            $form->text('shipping_user');
-            $form->mobile('shipping_ipone');
+            $form->text('name');
+            $form->mobile('mobile');
             $form->text('zip');
-            $form->text('province');
-            $form->text('city');
-            $form->text('district');
+            $form->text('province_id');
+            $form->text('city_id');
+            $form->text('district_id');
             $form->text('address');
             $form->switch('is_default')->default(0);
 

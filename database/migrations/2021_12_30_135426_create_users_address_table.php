@@ -16,8 +16,8 @@ class CreateUsersAddressTable extends Migration
         Schema::create('users_address', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('uid');
-            $table->string('shipping_user')->default('');
-            $table->string('shipping_ipone')->default('');
+            $table->string('name')->default('');
+            $table->string('mobile')->default('');
             $table->smallInteger('zip')->nullable();
             $table->string('province')->default('');
             $table->string('city')->default('');

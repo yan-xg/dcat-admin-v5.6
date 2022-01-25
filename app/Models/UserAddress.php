@@ -19,4 +19,15 @@ class UserAddress extends Model
         return $this->belongsTo(User::class,'uid');
     }
 
+    public function province(){
+        return $this->belongsTo(Region::class,'province_id');
+    }
+
+    public function city(){
+        return $this->belongsTo(Region::class,'city_id');
+    }
+
+    public function district(){
+        return $this->belongsTo(Region::class,'district_id');
+    }
 }

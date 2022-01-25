@@ -80,7 +80,7 @@ Page({
         util.request(api.AddressDetail, {
             id: that.data.addressId
         }).then(function(res) {
-            if (res.errno === 0) {
+            if (res.code == 200) {
                 that.setData({
                     address: res.data
                 });
@@ -97,12 +97,12 @@ Page({
                     util.request(api.DeleteAddress, {
                         id: id
                     }, 'POST').then(function(res) {
-                        if (res.errno === 0) {
+                        if (res.code == 200) {
                             wx.removeStorageSync('addressId');
                             util.showErrorToast('删除成功');
                             wx.navigateBack();
                         } else {
-                            util.showErrorToast(res.errmsg);
+                            util.showErrorToast(res.message);
                         }
                     });
                 }
@@ -128,6 +128,7 @@ Page({
 
         //设置区域选择数据
         let address = this.data.address;
+        
         if (address.province_id > 0 && address.city_id > 0 && address.district_id > 0) {
             let selectRegionList = this.data.selectRegionList;
             selectRegionList[0].id = address.province_id;
@@ -335,8 +336,10 @@ Page({
             return false;
         }
         let that = this;
+        let uid = wx.getStorageSync('uid');
         util.request(api.SaveAddress, {
             id: address.id,
+            uid: uid,
             name: address.name,
             mobile: address.mobile,
             province_id: address.province_id,
@@ -345,8 +348,6 @@ Page({
             address: address.address,
             is_default: address.is_default,
         }, 'POST').then(function(res) {
-            console.log(res)
-            return false;
             if (res.code == 200) {
                 wx.navigateBack()
             }

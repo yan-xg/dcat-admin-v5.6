@@ -28,9 +28,11 @@ module.exports = {
     OrderCountInfo: ApiRootUrl + 'order/orderCount', // 我的页面获取订单数状态
 
     // 收货地址
-    GetAddresses: ApiRootUrl + 'address/getAddresses',//获取收货地址
+    GetAddresses: ApiRootUrl + 'address/getAddresses',//获取收货地址列表
     SaveAddress: ApiRootUrl + 'address/saveAddress', //保存收货地址
     RegionList: ApiRootUrl + 'region/list', //获取区域列表
+    AddressDetail: ApiRootUrl + 'address/addressDetail', //收货地址详情
+    DeleteAddress: ApiRootUrl + 'address/deleteAddress', //删除收获地址
     
 
     /*
@@ -42,12 +44,7 @@ module.exports = {
     CartChecked: ApiRootUrl + 'cart/checked', // 选择或取消选择商品
     CartGoodsCount: ApiRootUrl + 'cart/goodsCount', // 获取购物车商品件数
     CartCheckout: ApiRootUrl + 'cart/checkout', // 下单前信息确认
-    
-    // 收货地址
-    AddressDetail: ApiRootUrl + 'address/addressDetail', //收货地址详情
-    DeleteAddress: ApiRootUrl + 'address/deleteAddress', //保存收货地址
-    
-    
+
     
     PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
     OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单

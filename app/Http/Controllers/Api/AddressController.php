@@ -57,11 +57,12 @@ class AddressController extends ApiController
         $address = $request->get('address');
         $is_default = $request->get('is_default');
 
+        if($is_default == 1){
+            UserAddress::where('uid', $uid[0])->update(['is_default' => 0]);
+        }
+
         $date = date('Y-m-d H:i:s',time());
         if($id > 0){
-            if($is_default == 1){
-                UserAddress::where('uid', $uid[0])->update(['is_default' => 0]);
-            }
             // 更新
             $res = UserAddress::where('id', $id)->update(
                 [

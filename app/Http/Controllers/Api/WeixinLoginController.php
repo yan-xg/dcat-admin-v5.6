@@ -61,6 +61,7 @@ class WeixinLoginController extends ApiController
                     'province' => $datas['province'],
                     'city' => $datas['city'],
                     'language' => $datas['language'],
+                    'created_at' => date('Y-m-d H:i:s',time()),
                 ];
                 $datas['uid'] = base64_encode(User::insertGetId($arr).'_'.$datas['openid']);
 

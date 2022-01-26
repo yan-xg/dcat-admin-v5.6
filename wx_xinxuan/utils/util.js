@@ -37,8 +37,8 @@ function formatTimeNum(number, format) {
     return format;
 }
 
-function testMobile(num) {
-    console.log
+function testMobile(num='') {
+    
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
     if (num.length == 0) {
         wx.showToast({

@@ -34,7 +34,7 @@ Page({
     //     }).catch((err) => { });
     // },
 
-    getUserProfile: function () {
+    getUserProfile: function (e) {
         // wx.navigateTo({
         //     url: '/pages/app-auth/index',
         // });

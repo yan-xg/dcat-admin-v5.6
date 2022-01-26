@@ -26,6 +26,8 @@ module.exports = {
 
     // 我的
     OrderCountInfo: ApiRootUrl + 'order/orderCount', // 我的页面获取订单数状态
+    userSetting: ApiRootUrl + 'settings/userSetting',
+    userDetail: ApiRootUrl + 'settings/userDetail',
 
     // 收货地址
     GetAddresses: ApiRootUrl + 'address/getAddresses',//获取收货地址列表
@@ -61,8 +63,6 @@ module.exports = {
     FootprintList: ApiRootUrl + 'footprint/list', //足迹列表
     FootprintDelete: ApiRootUrl + 'footprint/delete', //删除足迹
 
-    SaveSettings: ApiRootUrl + 'settings/save',
-    SettingsDetail: ApiRootUrl + 'settings/userDetail',
     GetBase64: ApiRootUrl + 'qrcode/getBase64', //获取商品详情二维码
     */
 

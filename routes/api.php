@@ -45,3 +45,7 @@ Route::get('region/list','Api\RegionController@getRegion');
 
 //我的订单（后台未搭建）
 Route::post('order/orderCount','Api\OrderCountController@orderCount');
+
+
+Route::post('settings/userSetting','Api\UserController@userSetting');
+Route::post('settings/userDetail','Api\UserController@userDetail');

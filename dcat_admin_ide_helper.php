@@ -68,11 +68,11 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection nickname
      * @property Grid\Column|Collection avatar_url
      * @property Grid\Column|Collection gender
+     * @property Grid\Column|Collection real_name
      * @property Grid\Column|Collection ipone
      * @property Grid\Column|Collection language
      * @property Grid\Column|Collection country
      * @property Grid\Column|Collection province
-     * @property Grid\Column|Collection city
      * @property Grid\Column|Collection openid
      * @property Grid\Column|Collection uid
      * @property Grid\Column|Collection mobile
@@ -140,11 +140,11 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection nickname(string $label = null)
      * @method Grid\Column|Collection avatar_url(string $label = null)
      * @method Grid\Column|Collection gender(string $label = null)
+     * @method Grid\Column|Collection real_name(string $label = null)
      * @method Grid\Column|Collection ipone(string $label = null)
      * @method Grid\Column|Collection language(string $label = null)
      * @method Grid\Column|Collection country(string $label = null)
      * @method Grid\Column|Collection province(string $label = null)
-     * @method Grid\Column|Collection city(string $label = null)
      * @method Grid\Column|Collection openid(string $label = null)
      * @method Grid\Column|Collection uid(string $label = null)
      * @method Grid\Column|Collection mobile(string $label = null)
@@ -217,11 +217,11 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection nickname
      * @property Show\Field|Collection avatar_url
      * @property Show\Field|Collection gender
+     * @property Show\Field|Collection real_name
      * @property Show\Field|Collection ipone
      * @property Show\Field|Collection language
      * @property Show\Field|Collection country
      * @property Show\Field|Collection province
-     * @property Show\Field|Collection city
      * @property Show\Field|Collection openid
      * @property Show\Field|Collection uid
      * @property Show\Field|Collection mobile
@@ -289,11 +289,11 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection nickname(string $label = null)
      * @method Show\Field|Collection avatar_url(string $label = null)
      * @method Show\Field|Collection gender(string $label = null)
+     * @method Show\Field|Collection real_name(string $label = null)
      * @method Show\Field|Collection ipone(string $label = null)
      * @method Show\Field|Collection language(string $label = null)
      * @method Show\Field|Collection country(string $label = null)
      * @method Show\Field|Collection province(string $label = null)
-     * @method Show\Field|Collection city(string $label = null)
      * @method Show\Field|Collection openid(string $label = null)
      * @method Show\Field|Collection uid(string $label = null)
      * @method Show\Field|Collection mobile(string $label = null)

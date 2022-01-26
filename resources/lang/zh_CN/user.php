@@ -10,6 +10,7 @@ return [
         'email' => '邮箱',
         'avatar_url' => '头像',
         'gender' => '性别',
+        'real_name' => '真实姓名',
         'ipone' => '手机号',
         'openid' => 'Openid',
         'token' => 'Token',

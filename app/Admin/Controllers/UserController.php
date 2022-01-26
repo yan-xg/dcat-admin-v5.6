@@ -32,7 +32,7 @@ class UserController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('nickname');
             $grid->column('avatar_url')->image('','50','50');
-            $grid->column('gender')->select($this->gender);
+            $grid->column('real_name');
             $grid->column('ipone');
             $grid->column('address','地址')->display('我的地址')->modal('我的地址', function (Grid\Displayers\Modal $modal){
                 return AmUserAddress::make()->payload(['uid'=>$this->id]);
@@ -49,7 +49,7 @@ class UserController extends AdminController
             });
 
             $grid->selector(function (Grid\Tools\Selector $selector) {
-                $selector->selectOne('gender', '性别', $this->gender);
+//                $selector->selectOne('gender', '性别', $this->gender);
                 $selector->selectOne('status', '状态', $this->status);
             });
 
@@ -76,7 +76,6 @@ class UserController extends AdminController
             $show->field('password');
             $show->field('email');
             $show->field('avatar_url');
-            $show->field('gender');
             $show->field('ipone');
             $show->field('openid');
             $show->field('token');

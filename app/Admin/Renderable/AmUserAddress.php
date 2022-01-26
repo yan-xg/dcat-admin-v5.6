@@ -12,13 +12,13 @@ class AmUserAddress extends LazyRenderable
     public function grid(): Grid
     {
         $uid = $this->uid;
-        return Grid::make(UserAddress::where('uid','=',$uid), function (Grid $grid) {
+        return Grid::make(UserAddress::where('uid','=',$uid)->with(['province','city','district']), function (Grid $grid) {
             $grid->column('id', 'ID')->sortable();
             $grid->column('name','收货人');
             $grid->column('mobile','手机号');
-            $grid->column('province_id','省份');
-            $grid->column('city_id','城市');
-            $grid->column('district_id','区县');
+            $grid->column('province.name','省份');
+            $grid->column('city.name','城市');
+            $grid->column('district.name','区县');
             $grid->column('address','具体地址')->limit(10);
             $grid->column('is_default','是否默认')->display(function ($default){
                 return $this->is_default ? '是' : '否';

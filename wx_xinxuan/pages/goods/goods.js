@@ -98,6 +98,7 @@ Page({
         util.request(api.GoodsDetail, {
             gid: that.data.id
         },'POST').then(function(res) {
+            console.log(res)
             if (res.code == 200) {
                 that.setData({
                     checkedSpecText: '请选择产品数量'
@@ -261,6 +262,34 @@ Page({
                     wx.hideLoading()
                 });
         }
+    },
+    //获取选中的规格信息
+    getCheckedSpecValue: function() {
+        let checkedValues = [];
+        let _specificationList = this.data.specificationList;
+        console.log(_specificationList)
+        return false;
+        let _checkedObj = {
+            nameId: _specificationList.specification_id,
+            valueId: 0,
+            valueText: ''
+        };
+        for (let j = 0; j < _specificationList.valueList.length; j++) {
+            if (_specificationList.valueList[j].checked) {
+                _checkedObj.valueId = _specificationList.valueList[j].id;
+                _checkedObj.valueText = _specificationList.valueList[j].value;
+            }
+        }
+        checkedValues.push(_checkedObj);
+        return checkedValues;
+    },
+    //判断规格是否选择完整
+    isCheckedAllSpec: function() {
+        return !this.getCheckedSpecValue().some(function(v) {
+            if (v.valueId == 0) {
+                return true;
+            }
+        });
     },
     fastToCart: function() {
         // 判断是否登录，如果没有登录，则登录

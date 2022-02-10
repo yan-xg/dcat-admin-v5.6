@@ -98,7 +98,6 @@ Page({
         util.request(api.GoodsDetail, {
             gid: that.data.id
         },'POST').then(function(res) {
-            console.log(res)
             if (res.code == 200) {
                 that.setData({
                     checkedSpecText: '请选择产品数量'
@@ -159,7 +158,7 @@ Page({
             sysHeight: sysHeight
         })
         this.getGoodsInfo();
-        // this.getCartCount();
+        this.getCartCount();
     },
     onHide:function(){
         this.setData({
@@ -168,10 +167,11 @@ Page({
     },
     getCartCount: function() {
         let that = this;
-        util.request(api.CartGoodsCount).then(function(res) {
-            if (res.errno === 0) {
+        let userInfo = wx.getStorageSync('userInfo');
+        util.request(api.CartGoodsCount,{user_id:userInfo.uid,goods_id:this.data.id}).then(function(res) {
+            if (res.code == 200) {
                 that.setData({
-                    cartGoodsCount: res.data.cartTotal.goodsCount
+                    cartGoodsCount: res.data.goodsCount
                 });
             }
         });
@@ -233,24 +233,23 @@ Page({
               mask:true
             })
             util.request(api.CartAdd, {
-                    addType: 0,
-                    goodsId: this.data.id,
-                    number: this.data.number,
-                }, "POST")
-                .then(function(res) {
+                    user_id:userInfo.uid,
+                    goods_id: this.data.id,
+                    goods_amount: this.data.number,
+                }, "POST").then(function(res) {
                     let _res = res;
-                    if (_res.errno == 0) {
+                    if (_res.code == 200) {
                         wx.showToast({
                             title: '添加成功',
                         });
-                        if (productLength != 1 || that.data.openAttr == true) {
+                        if (that.data.openAttr == true) {
                             that.setData({
                                 openAttr: !that.data.openAttr,
-                                cartGoodsCount: _res.data.cartTotal.goodsCount
+                                cartGoodsCount: _res.data.goodsCount
                             });
                         } else {
                             that.setData({
-                                cartGoodsCount: _res.data.cartTotal.goodsCount
+                                cartGoodsCount: _res.data.goodsCount
                             });
                         }
                     } else {
@@ -267,8 +266,6 @@ Page({
     getCheckedSpecValue: function() {
         let checkedValues = [];
         let _specificationList = this.data.specificationList;
-        console.log(_specificationList)
-        return false;
         let _checkedObj = {
             nameId: _specificationList.specification_id,
             valueId: 0,

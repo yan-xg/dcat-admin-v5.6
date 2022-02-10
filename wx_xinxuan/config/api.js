@@ -36,15 +36,16 @@ module.exports = {
     AddressDetail: ApiRootUrl + 'address/addressDetail', //收货地址详情
     DeleteAddress: ApiRootUrl + 'address/deleteAddress', //删除收获地址
     
-
-    /*
     // 购物车
     CartAdd: ApiRootUrl + 'cart/add', // 添加商品到购物车
+    CartGoodsCount: ApiRootUrl + 'cart/goodsCount', // 获取购物车商品件数
+
+    /*
     CartList: ApiRootUrl + 'cart/index', //获取购物车的数据
     CartUpdate: ApiRootUrl + 'cart/update', // 更新购物车的商品
     CartDelete: ApiRootUrl + 'cart/delete', // 删除购物车的商品
     CartChecked: ApiRootUrl + 'cart/checked', // 选择或取消选择商品
-    CartGoodsCount: ApiRootUrl + 'cart/goodsCount', // 获取购物车商品件数
+    
     CartCheckout: ApiRootUrl + 'cart/checkout', // 下单前信息确认
 
     

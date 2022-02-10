@@ -54,6 +54,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection goods_key
      * @property Grid\Column|Collection goods_value
      * @property Grid\Column|Collection goods_desc
+     * @property Grid\Column|Collection goods_amount
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
      * @property Grid\Column|Collection pic_desc
@@ -73,6 +74,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection language
      * @property Grid\Column|Collection country
      * @property Grid\Column|Collection province
+     * @property Grid\Column|Collection city
      * @property Grid\Column|Collection openid
      * @property Grid\Column|Collection uid
      * @property Grid\Column|Collection mobile
@@ -126,6 +128,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection goods_key(string $label = null)
      * @method Grid\Column|Collection goods_value(string $label = null)
      * @method Grid\Column|Collection goods_desc(string $label = null)
+     * @method Grid\Column|Collection goods_amount(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
      * @method Grid\Column|Collection pic_desc(string $label = null)
@@ -145,6 +148,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection language(string $label = null)
      * @method Grid\Column|Collection country(string $label = null)
      * @method Grid\Column|Collection province(string $label = null)
+     * @method Grid\Column|Collection city(string $label = null)
      * @method Grid\Column|Collection openid(string $label = null)
      * @method Grid\Column|Collection uid(string $label = null)
      * @method Grid\Column|Collection mobile(string $label = null)
@@ -203,6 +207,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection goods_key
      * @property Show\Field|Collection goods_value
      * @property Show\Field|Collection goods_desc
+     * @property Show\Field|Collection goods_amount
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
      * @property Show\Field|Collection pic_desc
@@ -222,6 +227,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection language
      * @property Show\Field|Collection country
      * @property Show\Field|Collection province
+     * @property Show\Field|Collection city
      * @property Show\Field|Collection openid
      * @property Show\Field|Collection uid
      * @property Show\Field|Collection mobile
@@ -275,6 +281,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection goods_key(string $label = null)
      * @method Show\Field|Collection goods_value(string $label = null)
      * @method Show\Field|Collection goods_desc(string $label = null)
+     * @method Show\Field|Collection goods_amount(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
      * @method Show\Field|Collection pic_desc(string $label = null)
@@ -294,6 +301,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection language(string $label = null)
      * @method Show\Field|Collection country(string $label = null)
      * @method Show\Field|Collection province(string $label = null)
+     * @method Show\Field|Collection city(string $label = null)
      * @method Show\Field|Collection openid(string $label = null)
      * @method Show\Field|Collection uid(string $label = null)
      * @method Show\Field|Collection mobile(string $label = null)

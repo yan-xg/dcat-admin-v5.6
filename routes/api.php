@@ -43,9 +43,13 @@ Route::post('address/deleteAddress','Api\AddressController@deleteAddress');
 Route::get('address/addressDetail','Api\AddressController@addressDetail');
 Route::get('region/list','Api\RegionController@getRegion');
 
+//我的
+Route::post('settings/userSetting','Api\UserController@userSetting');
+Route::post('settings/userDetail','Api\UserController@userDetail');
+
 //我的订单（后台未搭建）
 Route::post('order/orderCount','Api\OrderCountController@orderCount');
 
-
-Route::post('settings/userSetting','Api\UserController@userSetting');
-Route::post('settings/userDetail','Api\UserController@userDetail');
+// 购物车
+Route::post('cart/add','Api\CartController@cartAdd');
+Route::get('cart/goodsCount','Api\CartController@goodsCount');

@@ -26,4 +26,7 @@ Route::group([
     //用户
     $router->resource('users', 'UserController');
     $router->resource('address', 'UserAddressController');
+
+    //购物车
+    $router->resource('ordercart', 'OrderCartController');
 });

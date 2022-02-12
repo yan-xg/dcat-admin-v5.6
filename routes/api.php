@@ -53,3 +53,7 @@ Route::post('order/orderCount','Api\OrderCountController@orderCount');
 // 购物车
 Route::post('cart/add','Api\CartController@cartAdd');
 Route::get('cart/goodsCount','Api\CartController@goodsCount');
+Route::get('cart/index','Api\CartController@index');
+Route::post('cart/update','Api\CartController@cartUpdate');
+Route::post('cart/checked','Api\CartController@checked');
+Route::post('cart/delete','Api\CartController@cartDelete');

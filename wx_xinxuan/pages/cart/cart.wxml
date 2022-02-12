@@ -10,13 +10,13 @@
 				<view class="goods-info">
 					<view class="goods-url">
 						<view class="img-box" bindtap="goGoodsDetail" data-goodsid="{{item.goods_id}}">
-							<image src="{{item.list_pic_url}}" class="img" />
+							<image src="{{item.pic_url}}" class="img" />
 						</view>
 						<view class="text-box">
 							<view class="{{item.number >0 && item.is_on_sale == 1?'goods-title':'out-stock-title'}}">{{item.goods_name}}</view>
-							<view class="goods-label">{{item.goods_specifition_name_value}}</view>
+							<view class="goods-label"></view>
 							<view class="goods-price">
-								<view class='price-now'>￥{{item.retail_price}}</view>
+								<view class='price-now'>￥{{item.goods_price}}</view>
 							</view>
 							<view class="selnum" catchtap="nothing" wx:if="{{item.number > 0 && item.is_on_sale == 1}}">
 								<view data-item-index="{{index}}" class="cut" catchtap="cutNumber">-</view>

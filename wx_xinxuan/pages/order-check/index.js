@@ -1,6 +1,7 @@
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
 const pay = require('../../services/pay.js');
+const userInfo = wx.getStorageSync('userInfo');
 const app = getApp()
 
 Page({
@@ -62,6 +63,8 @@ Page({
         });
     },
     onLoad: function (options) {
+        console.log(options)
+        console.log(this.data)
         let addType = options.addtype;
         let orderFrom = options.orderFrom;
         if (addType != undefined) {
@@ -114,12 +117,19 @@ Page({
         let addressId = that.data.addressId;
         let orderFrom = that.data.orderFrom;
         let addType = that.data.addType;
+        console.log(addressId)
+        console.log(orderFrom)
+        console.log(addType)
+        return false;
         util.request(api.CartCheckout, {
+            user_id:userInfo.uid,
             addressId: addressId,
             addType: addType,
             orderFrom: orderFrom,
             type: 0
         }).then(function (res) {
+            console.log(res)
+            return false;
             if (res.errno === 0) {
                 let addressId = 0;
                 if (res.data.checkedAddress != 0) {

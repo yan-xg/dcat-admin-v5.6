@@ -1,5 +1,6 @@
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
+const userInfo = wx.getStorageSync('userInfo');
 const app = getApp()
 
 Page({
@@ -60,7 +61,7 @@ Page({
     },
     getCartList: function() {
         let that = this;
-        let userInfo = wx.getStorageSync('userInfo');
+        
         if(!userInfo){
             return false;
         }
@@ -117,7 +118,7 @@ Page({
             var goodIds = this.data.cartGoods.map(function(v) {
                 return v.goods_id;
             });
-            let userInfo = wx.getStorageSync('userInfo');
+            
             util.request(api.CartChecked, {
                 user_id:userInfo.uid,
                 goods_id: goodIds.join(','),
@@ -151,7 +152,7 @@ Page({
     },
     updateCart: function(itemIndex, goods_id, number, id) {
         let that = this;
-        let userInfo = wx.getStorageSync('userInfo');
+        
         wx.showLoading({
             title: '',
             mask:true
@@ -204,7 +205,7 @@ Page({
         this.updateCart(itemIndex, cartItem.goods_id, number, cartItem.id);
     },
     getCartNum: function() {
-        let userInfo = wx.getStorageSync('userInfo');
+        
         util.request(api.CartGoodsCount,{user_id:userInfo.uid}).then(function(res) {
             if (res.code == 200) {
                 let cartGoodsCount = '';
@@ -255,7 +256,7 @@ Page({
         let that = this;
 
         if (!this.data.isEditCart) {
-            let userInfo = wx.getStorageSync('userInfo');
+            
             util.request(api.CartChecked, {
                 user_id:userInfo.uid,
                 goods_id: that.data.cartGoods[itemIndex].goods_id,
@@ -353,7 +354,7 @@ Page({
         let itemIndex = e.currentTarget.dataset.itemIndex;
         let goods_id = this.data.cartGoods[itemIndex].goods_id;
         let that = this;
-        let userInfo = wx.getStorageSync('userInfo');
+        
         util.request(api.CartDelete, {
             user_id:userInfo.uid,
             goods_id: goods_id

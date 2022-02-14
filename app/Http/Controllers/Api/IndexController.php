@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Api\ApiController;
 use App\Models\Goods;
 use App\Models\Category;
+use App\Models\OrderCart;
+use Illuminate\Http\Request;
 
 class IndexController extends ApiController
 {
-    public function index(){
+    public function index(Request $request){
+        $user_id = getUserId($request->input('user_id'));
         $filed = ['id','category_id','goods_name','goods_shorttitle','goods_price','goods_stock','goods_property'];
         $where['status'] = 1;
         // 首页banner展示推荐的4个商品
@@ -46,6 +49,12 @@ class IndexController extends ApiController
         }
         $data['categoryList'] = $category;
         $data['banner'] = $banner;
+        if(is_array($user_id) && count($user_id) > 0){
+            $orderWhere['user_id'] = $user_id[0];
+            $orderWhere['checked'] = 1;
+            $data['cartCount'] = OrderCart::where($orderWhere)->count();
+        }
+
         return $this->success($data);
     }
 }

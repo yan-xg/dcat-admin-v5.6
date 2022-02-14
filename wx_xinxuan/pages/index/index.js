@@ -69,14 +69,28 @@ Page({
     },
     getIndexData: function () {
         let that = this;
-        util.request(api.IndexUrl).then(function (res) {
+        var userInfo = wx.getStorageSync('userInfo');
+        util.request(api.IndexUrl,{user_id:userInfo.uid}).then(function (res) {
             if (res.code == 200) {
                 that.setData({
+                    user_id:userInfo.uid,
                     floorGoods: res.data.categoryList,
                     banner: res.data.banner,
                     channel: res.data.categoryList,
                     loading: 1,
                 });
+                let cartGoodsCount = '';
+                if (res.data.cartCount == 0) {
+                    wx.removeTabBarBadge({
+                        index: 2,
+                    })
+                } else {
+                    cartGoodsCount = res.data.cartCount + '';
+                    wx.setTabBarBadge({
+                        index: 2,
+                        text: cartGoodsCount
+                    })
+                }
             }
         });
     },

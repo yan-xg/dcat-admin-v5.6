@@ -54,6 +54,7 @@ Route::post('order/orderCount','Api\OrderCountController@orderCount');
 Route::post('cart/add','Api\CartController@cartAdd');
 Route::get('cart/goodsCount','Api\CartController@goodsCount');
 Route::get('cart/index','Api\CartController@index');
+Route::get('cart/checkout','Api\CartController@checkout');
 Route::post('cart/update','Api\CartController@cartUpdate');
 Route::post('cart/checked','Api\CartController@checked');
 Route::post('cart/delete','Api\CartController@cartDelete');

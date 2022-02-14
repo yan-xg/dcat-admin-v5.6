@@ -71,6 +71,7 @@ class CartController extends ApiController
 //        $goods_id = $request->input('goods_id');
 
         $orderWhere['user_id'] = $user_id[0];
+        $orderWhere['checked'] = 1;
         $data['goodsCount'] = OrderCart::where($orderWhere)->count();
         return $this->success($data);
     }
@@ -204,5 +205,11 @@ class CartController extends ApiController
 
         $data = $this->getCartData($user_id[0]);
         return $this->success($data);
+    }
+
+    public function checkout(Request $request){
+        $user_id = getUserId($request->input('user_id'));
+        $addressId = $request->input('addressId');
+        return $user_id;
     }
 }

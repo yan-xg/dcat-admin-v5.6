@@ -51,7 +51,7 @@ class IndexController extends ApiController
         $data['banner'] = $banner;
         if(is_array($user_id) && count($user_id) > 0){
             $orderWhere['user_id'] = $user_id[0];
-            $orderWhere['checked'] = 1;
+//            $orderWhere['checked'] = 1;
             $data['cartCount'] = OrderCart::where($orderWhere)->count();
         }
 

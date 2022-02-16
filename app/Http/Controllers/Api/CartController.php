@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\ApiResponse;
 use App\Models\Goods;
+use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -71,7 +72,7 @@ class CartController extends ApiController
 //        $goods_id = $request->input('goods_id');
 
         $orderWhere['user_id'] = $user_id[0];
-        $orderWhere['checked'] = 1;
+//        $orderWhere['checked'] = 1;
         $data['goodsCount'] = OrderCart::where($orderWhere)->count();
         return $this->success($data);
     }
@@ -81,8 +82,8 @@ class CartController extends ApiController
             return false;
         }
 
-        $cartList = OrderCart::where('user_id',$uid)->get();
-        $amount = 0;
+        $cartList = OrderCart::where('user_id',$uid)->orderby('id','desc')->get();
+        $checkedGoodsCount = $amount = 0;
         foreach ($cartList as $v){
             $good = Goods::select(['id','goods_name','goods_price','goods_stock','goods_unit'])->find($v->goods_id);
             foreach ($good->goodsPic as $pk=>$pv){
@@ -98,9 +99,10 @@ class CartController extends ApiController
 
             if($v->checked == 1){
                 $amount += ($good->goods_price * $v->goods_amount);
+                $checkedGoodsCount += $v->goods_amount;
             }
         }
-        $data['cartTotal']['checkedGoodsCount'] = count($cartList);
+        $data['cartTotal']['checkedGoodsCount'] = $checkedGoodsCount;
         $data['cartTotal']['checkedGoodsAmount'] = $amount;
         $data['cartTotal']['user_id'] = $uid[0];
         return $data;
@@ -133,6 +135,11 @@ class CartController extends ApiController
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
             return $validator->errors()->first();
+        }
+
+        $goodsInfo = Goods::select('goods_stock')->find($goods_id);
+        if($number > $goodsInfo->goods_stock){
+            return $this->fail('库存不足');
         }
 
         $orderWhere['user_id'] = $user_id[0];
@@ -171,7 +178,7 @@ class CartController extends ApiController
                 $query->whereIn('goods_id', $goods_id);
             }];
         }else{
-            $orderWhere['goods_id'] = $goods_id;
+            $orderWhere['goods_id'] = $goods_id[0];
         }
 
         $res = OrderCart::where($orderWhere)->update([
@@ -209,7 +216,71 @@ class CartController extends ApiController
 
     public function checkout(Request $request){
         $user_id = getUserId($request->input('user_id'));
+        $goodId = $request->input('goodId');
         $addressId = $request->input('addressId');
-        return $user_id;
+        $addType = $request->input('addType');
+        $orderFrom = $request->input('orderFrom');
+        $freightPrice = 0; // 快递费待定
+
+        $where['user_id'] = $user_id[0];
+        switch ($addType){
+            case 0: //购物车结算
+                $where['checked'] = 1;
+                $Cart = OrderCart::where($where)->get();
+                $goodsTotalPrice = $checkedGoodsCount = 0;
+                foreach ($Cart as $v){
+                    $good = Goods::select(['id','goods_name','goods_price','goods_stock','goods_unit','status'])->find($v->goods_id);
+                    foreach ($good->goodsPic as $pk=>$pv){
+                        if($pk == 0){
+                            $good['pic_url'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
+                        }
+                    }
+                    if($good->goods_stock <= 0 || $v->goods_amount > $good->goods_stock){
+                        $data['outStock'] = 1;
+                        $orderWhere['user_id'] = $user_id[0];
+                        $orderWhere['goods_id'] = $good->id;
+                        $res = OrderCart::where($orderWhere)->update([
+                            'checked' => 0,
+                        ]);
+                    }
+                    $data['checkedGoodsList'][] = $good;
+
+                    if($v->checked == 1){
+                        $goodsTotalPrice += ($good->goods_price * $v->goods_amount);
+                        $checkedGoodsCount += $v->goods_amount;
+                    }
+                }
+            break;
+            case 1: //商品页购买结算
+                if(empty($goodId) || $goodId == ''){
+                    return $this->fail('缺少商品参数');
+                }
+                return  1;
+            break;
+            case 2: //订单详情
+                return 2;
+            break;
+            default:
+                return false;
+        }
+        $data['goodsCount'] = $checkedGoodsCount;
+        $data['goodsTotalPrice'] = $goodsTotalPrice;
+        $data['freightPrice'] = $freightPrice;  //暂定
+        $data['orderTotalPrice'] = $goodsTotalPrice + $freightPrice;
+        $data['actualPrice'] = $goodsTotalPrice + $freightPrice;
+
+        $addressWhere['uid'] =  $user_id[0];
+        if($addressId == 0){
+            $addressWhere['is_default'] =  1;
+        }else{
+            $addressWhere['id'] =  $addressId;
+        }
+        $address = UserAddress::where($addressWhere)->first();
+        $province = DB::table('region')->select('name')->where('id',$address['province_id'])->first();
+        $city = DB::table('region')->select('name')->where('id',$address['city_id'])->first();
+        $district = DB::table('region')->select('name')->where('id',$address['district_id'])->first();
+        $data['checkedAddress'] = $address;
+        $data['checkedAddress']['full_region'] = $province->name . $city->name . $district->name;
+        return $this->success($data);
     }
 }

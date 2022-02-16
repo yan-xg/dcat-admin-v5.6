@@ -16,10 +16,7 @@ Page({
         goodsCount: 0,
         postscript: '',
         outStock: 0,
-        payMethodItems: [{
-                name: 'offline',
-                value: '线下支付'
-            },
+        payMethodItems: [
             {
                 name: 'online',
                 value: '在线支付',
@@ -63,10 +60,9 @@ Page({
         });
     },
     onLoad: function (options) {
-        console.log(options)
-        console.log(this.data)
         let addType = options.addtype;
         let orderFrom = options.orderFrom;
+        let goodId = options.good_id;
         if (addType != undefined) {
             this.setData({
                 addType: addType
@@ -75,6 +71,11 @@ Page({
         if (orderFrom != undefined) {
             this.setData({
                 orderFrom: orderFrom
+            })
+        }
+        if (goodId != undefined) {
+            this.setData({
+                goodId: goodId
             })
         }
     },
@@ -115,22 +116,18 @@ Page({
     getCheckoutInfo: function () {
         let that = this;
         let addressId = that.data.addressId;
+        let goodId = that.data.goodId;
         let orderFrom = that.data.orderFrom;
         let addType = that.data.addType;
-        console.log(addressId)
-        console.log(orderFrom)
-        console.log(addType)
-        return false;
         util.request(api.CartCheckout, {
             user_id:userInfo.uid,
             addressId: addressId,
+            goodId:goodId,
             addType: addType,
             orderFrom: orderFrom,
             type: 0
         }).then(function (res) {
-            console.log(res)
-            return false;
-            if (res.errno === 0) {
+            if (res.code == 200) {
                 let addressId = 0;
                 if (res.data.checkedAddress != 0) {
                     addressId = res.data.checkedAddress.id;

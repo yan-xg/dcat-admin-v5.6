@@ -55,6 +55,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection goods_value
      * @property Grid\Column|Collection goods_desc
      * @property Grid\Column|Collection goods_amount
+     * @property Grid\Column|Collection checked
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
      * @property Grid\Column|Collection pic_desc
@@ -129,6 +130,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection goods_value(string $label = null)
      * @method Grid\Column|Collection goods_desc(string $label = null)
      * @method Grid\Column|Collection goods_amount(string $label = null)
+     * @method Grid\Column|Collection checked(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
      * @method Grid\Column|Collection pic_desc(string $label = null)
@@ -208,6 +210,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection goods_value
      * @property Show\Field|Collection goods_desc
      * @property Show\Field|Collection goods_amount
+     * @property Show\Field|Collection checked
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
      * @property Show\Field|Collection pic_desc
@@ -282,6 +285,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection goods_value(string $label = null)
      * @method Show\Field|Collection goods_desc(string $label = null)
      * @method Show\Field|Collection goods_amount(string $label = null)
+     * @method Show\Field|Collection checked(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
      * @method Show\Field|Collection pic_desc(string $label = null)

@@ -23,20 +23,14 @@ class OrderCartController extends AdminController
             $grid->column('goods_id');
             $grid->column('goods_amount');
             $grid->column('goods_price');
+            $grid->column('checked');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-
+        
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-
+        
             });
-
-            $grid->disableCreateButton();
-            $grid->disableDeleteButton();
-            $grid->disableEditButton();
-            $grid->disableViewButton();
-            $grid->disableBatchActions();
-            $grid->disableBatchDelete();
         });
     }
 
@@ -55,6 +49,7 @@ class OrderCartController extends AdminController
             $show->field('goods_id');
             $show->field('goods_amount');
             $show->field('goods_price');
+            $show->field('checked');
             $show->field('created_at');
             $show->field('updated_at');
         });
@@ -73,7 +68,8 @@ class OrderCartController extends AdminController
             $form->text('goods_id');
             $form->text('goods_amount');
             $form->text('goods_price');
-
+            $form->text('checked');
+        
             $form->display('created_at');
             $form->display('updated_at');
         });

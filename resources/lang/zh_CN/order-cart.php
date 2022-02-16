@@ -9,6 +9,7 @@ return [
         'goods_id' => '所属商品',
         'goods_amount' => '数量',
         'goods_price' => '价格',
+        'checked' => '是否选中',
     ],
     'options' => [
     ],

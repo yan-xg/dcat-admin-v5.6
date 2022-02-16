@@ -340,33 +340,14 @@ Page({
                 });
                 return false;
             }
-            //添加到购物车
             wx.showLoading({
                 title: '',
                 mask:true
-              })
-            util.request(api.CartAdd, {
-                    user_id:userInfo.uid,
-                    addType: 1, // 0：正常加入购物车，1:立即购买，2:再来一单
-                    goods_id: this.data.id,
-                    goods_amount: this.data.number,
-                    // productId: checkedProduct.id,
-                }, "POST")
-                .then(function(res) {
-                    let _res = res;
-                    wx.hideLoading()
-                    if (_res.code == 200) {
-                        let id = that.data.id;
-                        wx.navigateTo({
-                            url: '/pages/order-check/index?addtype=1'
-                        });
-                    } else {
-                        wx.showToast({
-                            image: '/images/icon/icon_error.png',
-                            title: _res.errmsg,
-                        });
-                    }
-                });
+            })
+            wx.hideLoading()
+            wx.navigateTo({
+                url: '/pages/order-check/index?addtype=1&good_id='+this.data.id
+            });
         }
     },
     cutNumber: function() {

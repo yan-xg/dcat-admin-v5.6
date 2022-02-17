@@ -255,7 +255,7 @@ Page({
                     } else {
                         wx.showToast({
                             image: '/images/icon/icon_error.png',
-                            title: _res.errmsg,
+                            title: _res.data,
                         });
                     }
                     wx.hideLoading()
@@ -346,7 +346,7 @@ Page({
             })
             wx.hideLoading()
             wx.navigateTo({
-                url: '/pages/order-check/index?addtype=1&good_id='+this.data.id
+                url: '/pages/order-check/index?addtype=1&good_id='+this.data.id+'&amount='+this.data.number
             });
         }
     },
@@ -359,16 +359,19 @@ Page({
         });
     },
     addNumber: function() {
-        this.setData({
-            number: Number(this.data.number) + 1
-        });
-        let checkedProductArray = this.getCheckedProductItem(this.getCheckedSpecKey());
-        let checkedProduct = checkedProductArray;
-        var check_number = this.data.number + 1;
-        if (checkedProduct.goods_number < check_number) {
+        var check_number = this.data.number;
+        if (this.data.goods.goods_stock <= check_number) {
             this.setData({
                 disabled: true
             });
+            wx.showToast({
+                image: '/images/icon/icon_error.png',
+                title: '库存不足',
+            });
+            return false;
         }
+        this.setData({
+            number: Number(this.data.number) + 1
+        });
     }
 })

@@ -367,3 +367,9 @@ page {
     font-size: 30rpx;
     font-weight: bold;
 }
+
+.to-pay-btn[disabled] {
+    color: #fff !important;
+    background: #888785 !important;
+    border-color: #888785 !important;
+}

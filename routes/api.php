@@ -47,9 +47,6 @@ Route::get('region/list','Api\RegionController@getRegion');
 Route::post('settings/userSetting','Api\UserController@userSetting');
 Route::post('settings/userDetail','Api\UserController@userDetail');
 
-//我的订单（后台未搭建）
-Route::post('order/orderCount','Api\OrderCountController@orderCount');
-
 // 购物车
 Route::post('cart/add','Api\CartController@cartAdd');
 Route::get('cart/goodsCount','Api\CartController@goodsCount');
@@ -58,3 +55,7 @@ Route::get('cart/checkout','Api\CartController@checkout');
 Route::post('cart/update','Api\CartController@cartUpdate');
 Route::post('cart/checked','Api\CartController@checked');
 Route::post('cart/delete','Api\CartController@cartDelete');
+
+//我的订单（后台未搭建）
+//Route::post('order/orderCount','Api\OrderController@orderCount');
+Route::get('order/orderGoods','Api\OrderController@orderGoods');

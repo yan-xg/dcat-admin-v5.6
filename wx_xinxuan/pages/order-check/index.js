@@ -6,6 +6,7 @@ const app = getApp()
 
 Page({
     data: {
+        isDisabled:false,
         checkedGoodsList: [],
         checkedAddress: {},
         goodsTotalPrice: 0.00, //商品总价
@@ -40,7 +41,7 @@ Page({
     },
     toGoodsList: function (e) {
         wx.navigateTo({
-            url: '/pages/ucenter/goods-list/index?id=0',
+            url: '/pages/ucenter/goods-list/index?id=0&addType='+this.data.addType+'&goodId='+this.data.goodId+'&amount='+this.data.amount,
         });
     },
     toSelectAddress: function () {
@@ -63,6 +64,7 @@ Page({
         let addType = options.addtype;
         let orderFrom = options.orderFrom;
         let goodId = options.good_id;
+        let amount = options.amount;
         if (addType != undefined) {
             this.setData({
                 addType: addType
@@ -76,6 +78,11 @@ Page({
         if (goodId != undefined) {
             this.setData({
                 goodId: goodId
+            })
+        }
+        if (amount != undefined) {
+            this.setData({
+                amount: amount
             })
         }
     },
@@ -117,12 +124,14 @@ Page({
         let that = this;
         let addressId = that.data.addressId;
         let goodId = that.data.goodId;
+        let amount = that.data.amount;
         let orderFrom = that.data.orderFrom;
         let addType = that.data.addType;
         util.request(api.CartCheckout, {
             user_id:userInfo.uid,
             addressId: addressId,
             goodId:goodId,
+            amount:amount,
             addType: addType,
             orderFrom: orderFrom,
             type: 0
@@ -147,6 +156,9 @@ Page({
                 wx.setStorageSync('addressId', addressId);
                 if (res.data.outStock == 1) {
                     util.showErrorToast('有部分商品缺货或已下架');
+                    that.setData({
+                        isDisabled: true
+                    });
                 } else if (res.data.numberChange == 1) {
                     util.showErrorToast('部分商品库存有变动');
                 }
@@ -159,10 +171,12 @@ Page({
             util.showErrorToast('请选择收货地址');
             return false;
         }
+        console.log(this.data)
+        return false;
         let addressId = this.data.addressId;
-        let postscript = this.data.postscript;
-        let freightPrice = this.data.freightPrice;
-        let actualPrice = this.data.actualPrice;
+        let postscript = this.data.postscript; //备注
+        let freightPrice = this.data.freightPrice;//快递费
+        let actualPrice = this.data.actualPrice;//实际价格
         wx.showLoading({
             title: '',
             mask:true

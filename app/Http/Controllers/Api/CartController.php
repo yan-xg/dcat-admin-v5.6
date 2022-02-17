@@ -30,13 +30,11 @@ class CartController extends ApiController
             'goods_amount.min'=>'数量必须大于0',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return $validator->errors()->first();
-        }
+        if ($validator->fails()) return $validator->errors()->first();
 
         $user_id = getUserId($user_id);
         $where['id'] = $goods_id;
-        $goods = Goods::where($where)->select(['goods_name','goods_price'])->first();
+        $goods = Goods::where($where)->select(['goods_name','goods_price','goods_stock'])->first();
         $date = date('Y-m-d H:i:s',time());
 
         $orderWhere['user_id'] = $user_id[0];
@@ -44,6 +42,9 @@ class CartController extends ApiController
         $orderinfo = OrderCart::where($orderWhere)->first();
         if($orderinfo){
             $amount = $orderinfo->goods_amount + $goods_amount;
+
+            if($amount > $goods->goods_stock) return $this->fail('库存不足');
+
             // 更新
             $res = OrderCart::where($orderWhere)->update([
                 'goods_amount' => $amount,
@@ -87,9 +88,7 @@ class CartController extends ApiController
         foreach ($cartList as $v){
             $good = Goods::select(['id','goods_name','goods_price','goods_stock','goods_unit'])->find($v->goods_id);
             foreach ($good->goodsPic as $pk=>$pv){
-                if($pk == 0){
-                    $good['pic_url'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
-                }
+                if($pk == 0) $good['pic_url'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
             }
             $good->goods_id = $v->goods_id;
             $good->number = $v->goods_amount;
@@ -133,17 +132,15 @@ class CartController extends ApiController
             'goods_id.min'=>'商品ID必须大于0',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return $validator->errors()->first();
-        }
-
-        $goodsInfo = Goods::select('goods_stock')->find($goods_id);
-        if($number > $goodsInfo->goods_stock){
-            return $this->fail('库存不足');
-        }
+        if ($validator->fails()) return $validator->errors()->first();
 
         $orderWhere['user_id'] = $user_id[0];
         $orderWhere['goods_id'] = $goods_id;
+        $orderInfo = OrderCart::where($orderWhere)->first();
+
+        $goodsInfo = Goods::select('goods_stock')->find($goods_id);
+        if($number > $orderInfo->goods_amount && $number > $goodsInfo->goods_stock) return $this->fail('库存不足');
+
         $res = OrderCart::where($orderWhere)->update([
             'goods_amount' => $number,
         ]);
@@ -168,9 +165,7 @@ class CartController extends ApiController
             'isChecked.required'=>'参数丢失',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return $validator->errors()->first();
-        }
+        if ($validator->fails()) return $validator->errors()->first();
 
         $orderWhere['user_id'] = $user_id[0];
         if(count($goods_id) > 1){
@@ -202,9 +197,7 @@ class CartController extends ApiController
             'goods_id.required'=>'商品ID丢失',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return $validator->errors()->first();
-        }
+        if ($validator->fails()) return $validator->errors()->first();
 
         $orderWhere['user_id'] = $user_id[0];
         $orderWhere['goods_id'] = $goods_id;
@@ -217,6 +210,7 @@ class CartController extends ApiController
     public function checkout(Request $request){
         $user_id = getUserId($request->input('user_id'));
         $goodId = $request->input('goodId');
+        $amount = $request->input('amount');
         $addressId = $request->input('addressId');
         $addType = $request->input('addType');
         $orderFrom = $request->input('orderFrom');
@@ -231,9 +225,7 @@ class CartController extends ApiController
                 foreach ($Cart as $v){
                     $good = Goods::select(['id','goods_name','goods_price','goods_stock','goods_unit','status'])->find($v->goods_id);
                     foreach ($good->goodsPic as $pk=>$pv){
-                        if($pk == 0){
-                            $good['pic_url'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
-                        }
+                        if($pk == 0) $good['pic_url'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
                     }
                     if($good->goods_stock <= 0 || $v->goods_amount > $good->goods_stock){
                         $data['outStock'] = 1;
@@ -255,10 +247,23 @@ class CartController extends ApiController
                 if(empty($goodId) || $goodId == ''){
                     return $this->fail('缺少商品参数');
                 }
-                return  1;
+                $good = Goods::select(['id','goods_name','goods_price','goods_stock','goods_unit','status'])->find($goodId);
+                foreach ($good->goodsPic as $pk=>$pv){
+                    if($pk == 0) $good['pic_url'] = config('dictionary.goods.goods_url').'/'.$pv->pic_url;
+                }
+                if(empty($amount)) $amount = 1;
+
+                if($good->goods_stock <= 0 || $amount > $good->goods_stock){
+                    $data['outStock'] = 1;
+                }
+
+                $data['checkedGoodsList'][] = $good;
+                $checkedGoodsCount = $amount;
+                $goodsTotalPrice = $good->goods_price * $amount;
             break;
             case 2: //订单详情
-                return 2;
+                //这里应该查订单表
+                return false;
             break;
             default:
                 return false;

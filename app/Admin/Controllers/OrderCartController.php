@@ -17,20 +17,27 @@ class OrderCartController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new OrderCart(), function (Grid $grid) {
+        return Grid::make(new OrderCart(['user','goods']), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('user_id');
-            $grid->column('goods_id');
+            $grid->column('user.nickname','所属用户')->label('primary');
+            $grid->column('goods.goods_name','所属商品');
             $grid->column('goods_amount');
             $grid->column('goods_price');
-            $grid->column('checked');
+            $grid->column('checked')->switch();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
-            $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-        
-            });
+
+//            $grid->filter(function (Grid\Filter $filter) {
+//                $filter->equal('id');
+//
+//            });
+
+            $grid->disableCreateButton();
+            $grid->disableDeleteButton();
+            $grid->disableEditButton();
+            $grid->disableViewButton();
+            $grid->disableBatchActions();
+            $grid->disableBatchDelete();
         });
     }
 
@@ -69,7 +76,7 @@ class OrderCartController extends AdminController
             $form->text('goods_amount');
             $form->text('goods_price');
             $form->text('checked');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });

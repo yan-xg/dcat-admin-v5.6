@@ -52,4 +52,8 @@ class OrderController extends ApiController
         }
         return $this->success($data);
     }
+
+    public function orderSubmit(){
+
+    }
 }

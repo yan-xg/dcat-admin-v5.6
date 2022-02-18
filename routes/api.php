@@ -56,6 +56,7 @@ Route::post('cart/update','Api\CartController@cartUpdate');
 Route::post('cart/checked','Api\CartController@checked');
 Route::post('cart/delete','Api\CartController@cartDelete');
 
-//我的订单（后台未搭建）
+//我的订单
 //Route::post('order/orderCount','Api\OrderController@orderCount');
 Route::get('order/orderGoods','Api\OrderController@orderGoods');
+Route::post('order/submit','Api\OrderController@orderSubmit');

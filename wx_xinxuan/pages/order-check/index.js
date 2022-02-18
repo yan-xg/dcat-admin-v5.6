@@ -20,7 +20,7 @@ Page({
         payMethodItems: [
             {
                 name: 'online',
-                value: '在线支付',
+                value: '微信支付',
                 checked: 'true'
             },
         ],
@@ -171,8 +171,6 @@ Page({
             util.showErrorToast('请选择收货地址');
             return false;
         }
-        console.log(this.data)
-        return false;
         let addressId = this.data.addressId;
         let postscript = this.data.postscript; //备注
         let freightPrice = this.data.freightPrice;//快递费
@@ -182,6 +180,7 @@ Page({
             mask:true
         })
         util.request(api.OrderSubmit, {
+            user_id:userInfo.uid,
             addressId: addressId,
             postscript: postscript,
             freightPrice: freightPrice,

@@ -54,8 +54,25 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection goods_key
      * @property Grid\Column|Collection goods_value
      * @property Grid\Column|Collection goods_desc
+     * @property Grid\Column|Collection order_sn
+     * @property Grid\Column|Collection remark
+     * @property Grid\Column|Collection order_status
+     * @property Grid\Column|Collection consignee_name
+     * @property Grid\Column|Collection consignee_mobile
+     * @property Grid\Column|Collection province
+     * @property Grid\Column|Collection city
+     * @property Grid\Column|Collection district
+     * @property Grid\Column|Collection address
+     * @property Grid\Column|Collection payment_method
+     * @property Grid\Column|Collection order_money
+     * @property Grid\Column|Collection district_money
+     * @property Grid\Column|Collection freight_money
+     * @property Grid\Column|Collection payment_money
+     * @property Grid\Column|Collection pay_time
      * @property Grid\Column|Collection goods_amount
      * @property Grid\Column|Collection checked
+     * @property Grid\Column|Collection goods_count
+     * @property Grid\Column|Collection goods_pic
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
      * @property Grid\Column|Collection pic_desc
@@ -74,8 +91,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection ipone
      * @property Grid\Column|Collection language
      * @property Grid\Column|Collection country
-     * @property Grid\Column|Collection province
-     * @property Grid\Column|Collection city
      * @property Grid\Column|Collection openid
      * @property Grid\Column|Collection uid
      * @property Grid\Column|Collection mobile
@@ -83,7 +98,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection province_id
      * @property Grid\Column|Collection city_id
      * @property Grid\Column|Collection district_id
-     * @property Grid\Column|Collection address
      * @property Grid\Column|Collection is_default
      *
      * @method Grid\Column|Collection id(string $label = null)
@@ -129,8 +143,25 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection goods_key(string $label = null)
      * @method Grid\Column|Collection goods_value(string $label = null)
      * @method Grid\Column|Collection goods_desc(string $label = null)
+     * @method Grid\Column|Collection order_sn(string $label = null)
+     * @method Grid\Column|Collection remark(string $label = null)
+     * @method Grid\Column|Collection order_status(string $label = null)
+     * @method Grid\Column|Collection consignee_name(string $label = null)
+     * @method Grid\Column|Collection consignee_mobile(string $label = null)
+     * @method Grid\Column|Collection province(string $label = null)
+     * @method Grid\Column|Collection city(string $label = null)
+     * @method Grid\Column|Collection district(string $label = null)
+     * @method Grid\Column|Collection address(string $label = null)
+     * @method Grid\Column|Collection payment_method(string $label = null)
+     * @method Grid\Column|Collection order_money(string $label = null)
+     * @method Grid\Column|Collection district_money(string $label = null)
+     * @method Grid\Column|Collection freight_money(string $label = null)
+     * @method Grid\Column|Collection payment_money(string $label = null)
+     * @method Grid\Column|Collection pay_time(string $label = null)
      * @method Grid\Column|Collection goods_amount(string $label = null)
      * @method Grid\Column|Collection checked(string $label = null)
+     * @method Grid\Column|Collection goods_count(string $label = null)
+     * @method Grid\Column|Collection goods_pic(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
      * @method Grid\Column|Collection pic_desc(string $label = null)
@@ -149,8 +180,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection ipone(string $label = null)
      * @method Grid\Column|Collection language(string $label = null)
      * @method Grid\Column|Collection country(string $label = null)
-     * @method Grid\Column|Collection province(string $label = null)
-     * @method Grid\Column|Collection city(string $label = null)
      * @method Grid\Column|Collection openid(string $label = null)
      * @method Grid\Column|Collection uid(string $label = null)
      * @method Grid\Column|Collection mobile(string $label = null)
@@ -158,7 +187,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection province_id(string $label = null)
      * @method Grid\Column|Collection city_id(string $label = null)
      * @method Grid\Column|Collection district_id(string $label = null)
-     * @method Grid\Column|Collection address(string $label = null)
      * @method Grid\Column|Collection is_default(string $label = null)
      */
     class Grid {}
@@ -209,8 +237,25 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection goods_key
      * @property Show\Field|Collection goods_value
      * @property Show\Field|Collection goods_desc
+     * @property Show\Field|Collection order_sn
+     * @property Show\Field|Collection remark
+     * @property Show\Field|Collection order_status
+     * @property Show\Field|Collection consignee_name
+     * @property Show\Field|Collection consignee_mobile
+     * @property Show\Field|Collection province
+     * @property Show\Field|Collection city
+     * @property Show\Field|Collection district
+     * @property Show\Field|Collection address
+     * @property Show\Field|Collection payment_method
+     * @property Show\Field|Collection order_money
+     * @property Show\Field|Collection district_money
+     * @property Show\Field|Collection freight_money
+     * @property Show\Field|Collection payment_money
+     * @property Show\Field|Collection pay_time
      * @property Show\Field|Collection goods_amount
      * @property Show\Field|Collection checked
+     * @property Show\Field|Collection goods_count
+     * @property Show\Field|Collection goods_pic
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
      * @property Show\Field|Collection pic_desc
@@ -229,8 +274,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection ipone
      * @property Show\Field|Collection language
      * @property Show\Field|Collection country
-     * @property Show\Field|Collection province
-     * @property Show\Field|Collection city
      * @property Show\Field|Collection openid
      * @property Show\Field|Collection uid
      * @property Show\Field|Collection mobile
@@ -238,7 +281,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection province_id
      * @property Show\Field|Collection city_id
      * @property Show\Field|Collection district_id
-     * @property Show\Field|Collection address
      * @property Show\Field|Collection is_default
      *
      * @method Show\Field|Collection id(string $label = null)
@@ -284,8 +326,25 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection goods_key(string $label = null)
      * @method Show\Field|Collection goods_value(string $label = null)
      * @method Show\Field|Collection goods_desc(string $label = null)
+     * @method Show\Field|Collection order_sn(string $label = null)
+     * @method Show\Field|Collection remark(string $label = null)
+     * @method Show\Field|Collection order_status(string $label = null)
+     * @method Show\Field|Collection consignee_name(string $label = null)
+     * @method Show\Field|Collection consignee_mobile(string $label = null)
+     * @method Show\Field|Collection province(string $label = null)
+     * @method Show\Field|Collection city(string $label = null)
+     * @method Show\Field|Collection district(string $label = null)
+     * @method Show\Field|Collection address(string $label = null)
+     * @method Show\Field|Collection payment_method(string $label = null)
+     * @method Show\Field|Collection order_money(string $label = null)
+     * @method Show\Field|Collection district_money(string $label = null)
+     * @method Show\Field|Collection freight_money(string $label = null)
+     * @method Show\Field|Collection payment_money(string $label = null)
+     * @method Show\Field|Collection pay_time(string $label = null)
      * @method Show\Field|Collection goods_amount(string $label = null)
      * @method Show\Field|Collection checked(string $label = null)
+     * @method Show\Field|Collection goods_count(string $label = null)
+     * @method Show\Field|Collection goods_pic(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
      * @method Show\Field|Collection pic_desc(string $label = null)
@@ -304,8 +363,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection ipone(string $label = null)
      * @method Show\Field|Collection language(string $label = null)
      * @method Show\Field|Collection country(string $label = null)
-     * @method Show\Field|Collection province(string $label = null)
-     * @method Show\Field|Collection city(string $label = null)
      * @method Show\Field|Collection openid(string $label = null)
      * @method Show\Field|Collection uid(string $label = null)
      * @method Show\Field|Collection mobile(string $label = null)
@@ -313,7 +370,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection province_id(string $label = null)
      * @method Show\Field|Collection city_id(string $label = null)
      * @method Show\Field|Collection district_id(string $label = null)
-     * @method Show\Field|Collection address(string $label = null)
      * @method Show\Field|Collection is_default(string $label = null)
      */
     class Show {}

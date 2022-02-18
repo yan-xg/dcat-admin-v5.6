@@ -29,4 +29,7 @@ Route::group([
 
     //购物车
     $router->resource('ordercart', 'OrderCartController');
+
+    //订单
+    $router->resource('order', 'OrderController');
 });

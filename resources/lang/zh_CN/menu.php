@@ -22,5 +22,7 @@ return [
         'users'         => '用户管理',
         'userlist'      => '用户列表',
         'address'       => '地址列表',
+        'shoppingcart'       => '购物车',
+        'orderlist'       => '订单列表',
     ],
 ];

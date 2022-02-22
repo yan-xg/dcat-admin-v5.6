@@ -175,6 +175,10 @@ Page({
         let postscript = this.data.postscript; //备注
         let freightPrice = this.data.freightPrice;//快递费
         let actualPrice = this.data.actualPrice;//实际价格
+        let payMethod = this.data.payMethod;//支付方式
+        let addType = this.data.addType;
+        let goodId = this.data.goodId;
+        let amount = this.data.amount;
         wx.showLoading({
             title: '',
             mask:true
@@ -185,8 +189,13 @@ Page({
             postscript: postscript,
             freightPrice: freightPrice,
             actualPrice: actualPrice,
-            offlinePay: 0
+            payMethod: payMethod, // 支付方式
+            addType:addType,
+            goodId:goodId,
+            amount:amount,
         }, 'POST').then(res => {
+            console.log(res)
+            return false;
             if (res.errno === 0) {
                 wx.removeStorageSync('orderId');
                 wx.setStorageSync('addressId', 0);
@@ -206,6 +215,7 @@ Page({
             wx.hideLoading()
         });
     },
+    /*
     offlineOrder: function (e) {
         if (this.data.addressId <= 0) {
             util.showErrorToast('请选择收货地址');
@@ -236,4 +246,5 @@ Page({
             }
         });
     }
+    */
 })

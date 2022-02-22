@@ -46,15 +46,11 @@ module.exports = {
 
     OrderGoods: ApiRootUrl + 'order/orderGoods', // 获取checkout页面的商品列表
     OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单
+
+    PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
     // OrderCountInfo: ApiRootUrl + 'order/orderCount', // 我的页面获取订单数状态
 
-    /*
-
-    
-
-    
-    PayPrepayId: ApiRootUrl + 'pay/preWeixinPay', //获取微信统一下单prepay_id
-    
+    /*    
     OrderList: ApiRootUrl + 'order/list', //订单列表
     OrderDetail: ApiRootUrl + 'order/detail', //订单详情
     OrderDelete: ApiRootUrl + 'order/delete', //订单删除
